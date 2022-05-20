@@ -1,5 +1,34 @@
 <div class = "col-lg-12">
   <h3 class="mt-4 mb-4">Listing Workshops</h3>
+
+  <%= link_to "Search Workshop", "#offcanvasExample", data: { bs_toggle: "offcanvas" }, area: { controls: "offcanvasExample", role: "button", class: "btn btn-primary btn-lg" } %>
+
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Search Workshop here..!</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <%= search_form_for @q, url: workshops_path do |form| %>
+  <div class="form-group">
+    <%= form.label :search_by_name, class: "form-label" %>
+    <%= form.text_field :name_cont, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :by_start_date, class: "form-label" %>
+    <%= form.date_field :start_date_cont, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :by_registration_fee_lteq, class: "form-label" %>
+    <%= form.text_field :registration_fee_lteq, class: "form-control" %>
+  </div>
+  <div class = "form-group">
+    <%= form.submit "Search Employee", class: "btn btn-primary btn-md my-4" %>
+  </div>
+  <% end %>  
+</div>
+  </div>
+  </div>
   <div class="row">
     <% @workshops.each do |workshop| %>
       <div class = "col-lg-6">
