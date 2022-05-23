@@ -3,6 +3,12 @@ class WorkshopsController < ApplicationController
     # @workshops = Workshop.upcoming_workshops
     @q = Workshop.ransack(params[:name])
     @workshops = @q.result(distinct: true)
+    respond_to do |format|
+      format.html
+      format.csv {
+        send_data ExportService::WorkshopExport.new(@q.result).to_csv, filename: "Workshop-#{DateTime.current}.csv"
+      }
+    end
   end
 
   # def search_form
