@@ -4,10 +4,18 @@
       <h4 class="card-title">Booking confirmation</h4>
     </div>
     <div class ="card-body">
-      <h1>Greetings from Simform</h1>
+      <h1>Greetings from <b>Udemy</b></h1>
       <h3>Hello <%= @customer.full_name %></h3>
       <p class="lead">Your booking for <strong><%= @workshop.name %> has been confirmed. Please findthe booking details below. </strong></p>
-      <%= @svg.html_safe %>
+      <h3>Booking Details</h3>
+        <p><strong>No of Tickets:</strong><%= @booking.no_of_tickets %></p>
+        <p><strong>Amount Paid:</strong><%= @booking.amount_paid %></p>
+      <hr>
+        <h3>Workshop Schedule</h3>
+        <h4><span class="badge bg-primary"><%= @workshop.total_duration %></span></h4>
+        <h4><span class="badge bg-primary"><%= @workshop.daily_duration %></span></h4>
+
+
     </div>
   </div>
 </div>
