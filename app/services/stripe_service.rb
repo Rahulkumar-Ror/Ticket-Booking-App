@@ -1,3 +1,5 @@
+require "stripe"
+
 class StripeService
   def initialize()
     Stripe.api_key = ENV["STRIPE_SECRET_KEY"]
@@ -24,14 +26,14 @@ class StripeService
         number: param[:card_number].to_s,
         exp_month: param[:exp_month],
         exp_year: param[:exp_year],
-        cvv: param[:cvv],
+        cvc: param[:cvv],
       },
     })
   end
 
   def create_stripe_customer_card(params, stripe_customer)
     token = create_card_token(params)
-    Stripe::Customer.create source(
+    Stripe::Customer.create_source(
       stripe_customer.id,
       { source: token.id }
     )

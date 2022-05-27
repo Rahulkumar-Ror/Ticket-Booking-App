@@ -1,0 +1,55 @@
+<div class="container my-3">
+<div class="row justify-content-center">
+<div class="col-19 my-4">
+<div class="card text-center shadow mb-5 bg-light">
+<%= form_with model: @workshop do |f| %>
+  <div class="center">
+    <%= f.label :name , class: "form-group" %>
+    <%= f.text_field :name , class: "form-control" %>
+  </div>
+  <div class="center">
+    <%= f.label :description, class: "form-group" %>
+    <%= f.text_area :description  , class: "form-control"%>
+  </div>
+  <div class="center">
+    <%= f.label :start_date, class: "form-group" %>
+    <%= f.date_field :start_date  , class: "form-control"%>
+  </div>
+  <div class="center">
+    <%= f.label :end_date, class: "form-group" %>
+    <%= f.date_field :end_date , class: "form-control" %>
+  </div>
+  <div class="center">
+    <%= f.label :start_time, class: "form-group" %>
+    <%= f.time_field :start_time , class: "form-control" %>
+  </div>
+  <div class="center">
+    <%= f.label :end_time, class: "form-group" %>
+    <%= f.time_field :end_time , class: "form-control" %>
+  </div>
+  <div class="center">
+    <%= f.label :total_sits, class: "form-group" %>
+    <%= f.number_field :total_sits , class: "form-control" %>
+  </div>
+
+  <div class="center">
+    <%= f.label :remaining_sits, class: "form-group" %>
+    <%= f.number_field :remaining_sits , class: "form-control" %>
+  </div>
+  <div class="center">
+    <%= f.label :registration_fee, class: "form-group" %>
+    <%= f.number_field :registration_fee , class: "form-control" %>
+  </div>
+  <div>
+    <%= f.label :clip,  class: "form-group"  %>
+    <%= f.file_field :clip , class: "form-control" %>
+  </div>
+
+  <div>
+    <%= f.label :thumbnail, class: "form-group" %>
+    <%= f.file_field :thumbnail, class: "form-control"  %>
+  </div>
+  <div class="center">
+    <%= f.submit  class: "btn btn-primary my-3" %>
+  </div>
+<% end %>

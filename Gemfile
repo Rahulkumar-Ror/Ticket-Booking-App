@@ -53,6 +53,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "dotenv-rails"
   gem "letter_opener"
+  gem "pry"
 end
 
 group :development do
@@ -77,3 +78,6 @@ gem "stripe"
 gem "rqrcode", "~> 2.0"
 gem "friendly_id", "~> 5.4.0"
 gem "ransack"
+gem 'font-awesome-sass'
+gem 'devise'
+gem 'carrierwave'

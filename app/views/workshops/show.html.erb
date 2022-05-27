@@ -25,8 +25,8 @@
 	  <div class="card-body">
     <% if @workshop.is_upcoming_workshop? %>
 		  <h4 class="card-title mb-2">Reserve your sit now!</h4>
-		  <%= form_with url: :bookings, data: { turbo: false } do |form| %>
-			<%= form.hidden_field :workshop_id, value: @workshop.id %>
+		    <%= form_with url: :bookings, data: { turbo: false } do |form| %>
+		  	<%= form.hidden_field :workshop_id, value: @workshop.id %>
       <div class= "form-group">
         <%= form.label :full_name, class: "mb-2 mt-2" %>
         <%= form.text_field :full_name, class: "form-control", required: true %>

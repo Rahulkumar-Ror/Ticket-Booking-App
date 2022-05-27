@@ -1,10 +1,12 @@
 class Workshop < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
-
+  # mount_uploader :video, VideoUploader
+  has_one_attached :clip 
+  has_one_attached :thumbnail 
   has_many :bookings
   has_many :customers, through: :bookings
-
+  belongs_to :view
   validates :name, :description, presence: true
   validates :start_date, :end_date, :start_time, :end_time, presence: true
   validates :total_sits, :registration_fee, presence: true, numericality: true
