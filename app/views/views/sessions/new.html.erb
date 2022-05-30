@@ -1,0 +1,35 @@
+<div class="col-lg-6 mx-lg-auto my-5">
+<div class="card shadow">
+<div class="card-header">
+  <h2 class="card-title text-center">Login</h2>
+  <p style="text-align:center;">Please sign in to continue.</p>
+</div>
+<div class="card-body">
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { turbo: false } }) do |f| %>
+  <div class="form-group">
+    <%= f.label :email ,class: "mb-2" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password ,class: "mb-2" %><br />
+    <%= f.password_field :password, autocomplete: "current-password" , class: 'form-control'%>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="form-group mb-2 mt-2">
+      <%= f.check_box :remember_me  %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Log in", class: "btn btn-outline-primary my-2 btn-lg", data: {turbo: false }  %>
+  </div>
+<% end %>
+
+<p>New user? <b><%= render "devise/shared/links" %></b></p>
+</div>
+</div>
+</div>

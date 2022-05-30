@@ -1,6 +1,7 @@
 class WorkshopsController < ApplicationController
   before_action :authenticate_view!
   before_action :auth_admin, only: [:new, :create]
+  before_action :initialize_session
   def index
     # @workshops = Workshop.upcoming_workshops
     @q = Workshop.ransack(params[:name])
@@ -34,6 +35,11 @@ class WorkshopsController < ApplicationController
     end
   end
 
+  def add_to_cart
+    session[:cart] << params[:id]
+    redirect_to root_path
+  end
+
   # def search_form
   #   @q = Workshop.ransack(params[:name])
   #   @Workshop = @q.result(distinct: true)
@@ -41,11 +47,19 @@ class WorkshopsController < ApplicationController
 
   def show
     @workshop = Workshop.friendly.find(params[:id])
+    session[:visit_count] ||= 0
+    session[:visit_count] += 1
+    @visit_count = session[:visit_count]
   end
 
   private 
   def workshop_params
     params.require(:user).permit(:name, :description, :start_date, :end_date, :start_time, :end_time, :total_sits, :remaining_sits, :registration_fee, :clip, :thumbnail)
+  end
+
+  def initialize_session
+    # session[:visit_count] ||= []
+    session[:cart] ||= []
   end
   
 end

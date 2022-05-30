@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_27_141121) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_30_132150) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_27_141121) do
     t.integer "workshop_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "order_number"
     t.index ["customer_id"], name: "index_bookings_on_customer_id"
     t.index ["workshop_id"], name: "index_bookings_on_workshop_id"
   end
@@ -84,6 +85,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_27_141121) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "role"

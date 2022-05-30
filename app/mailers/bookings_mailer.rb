@@ -3,7 +3,7 @@ require "rqrcode"
 class BookingsMailer < ApplicationMailer
   def booking_confirmation(booking)
     qrcode = RQRCode::QRCode.new(booking_root_url(booking.id))
-    svg = qrcode.as_svg(
+    @svg = qrcode.as_svg(
       color: "000",
       shape_rendering: "crispEdges",
       module_size: 11,
@@ -23,7 +23,7 @@ class BookingsMailer < ApplicationMailer
     if Rails.env.development?
       "http://localhost:3000/bookings/#{booking_id}/booking_details"
     else
-      #TODO - Prepare the PROD url
+   
     end
   end
 end

@@ -16,7 +16,7 @@ workshops = Workshop.create([
     start_time: "10:00 AM",
     end_time: "3:00 PM",
     total_sits: 100,
-    remaining_sits: 0,
+    remaining_sits: 40,
     registration_fee: 1500,
   },
   {
@@ -27,7 +27,7 @@ workshops = Workshop.create([
     start_time: "10:00 AM",
     end_time: "3:00 PM",
     total_sits: 100,
-    remaining_sits: 0,
+    remaining_sits: 100,
     registration_fee: 1500,
   },
 
@@ -50,7 +50,7 @@ workshops = Workshop.create([
     start_time: "10:00 AM",
     end_time: "3:00 PM",
     total_sits: 100,
-    remaining_sits: 0,
+    remaining_sits: 100,
     registration_fee: 1500,
   },
   {
@@ -61,7 +61,7 @@ workshops = Workshop.create([
     start_time: "10:00 AM",
     end_time: "3:00 PM",
     total_sits: 100,
-    remaining_sits: 0,
+    remaining_sits: 60,
     registration_fee: 1500,
   },
   {
@@ -72,7 +72,7 @@ workshops = Workshop.create([
     start_time: "10:00 AM",
     end_time: "3:00 PM",
     total_sits: 200,
-    remaining_sits: 0,
+    remaining_sits: 100,
     registration_fee: 1500,
   },
   {
@@ -83,7 +83,7 @@ workshops = Workshop.create([
     start_time: "10:00 AM",
     end_time: "3:00 PM",
     total_sits: 100,
-    remaining_sits: 0,
+    remaining_sits: 100,
     registration_fee: 1500,
   },
   {
@@ -94,7 +94,7 @@ workshops = Workshop.create([
     start_time: "10:00 AM",
     end_time: "3:00 PM",
     total_sits: 100,
-    remaining_sits: 0,
+    remaining_sits: 100,
     registration_fee: 1500,
   },
   {
@@ -105,7 +105,7 @@ workshops = Workshop.create([
     start_time: "10:00 AM",
     end_time: "3:00 PM",
     total_sits: 250,
-    remaining_sits: 0,
+    remaining_sits: 100,
     registration_fee: 1000,
   },
 
@@ -117,7 +117,7 @@ workshops = Workshop.create([
     start_time: "10:00 AM",
     end_time: "3:00 PM",
     total_sits: 100,
-    remaining_sits: 0,
+    remaining_sits: 55,
     registration_fee: 1500,
   },
   {
@@ -140,7 +140,7 @@ workshops = Workshop.create([
     start_time: "10:00 AM",
     end_time: "3:00 PM",
     total_sits: 100,
-    remaining_sits: 0,
+    remaining_sits: 55,
     registration_fee: 1500,
   },
   {
@@ -151,7 +151,7 @@ workshops = Workshop.create([
     start_time: "10:00 AM",
     end_time: "3:00 PM",
     total_sits: 100,
-    remaining_sits: 0,
+    remaining_sits: 100,
     registration_fee: 1500,
   },
   {
@@ -162,7 +162,7 @@ workshops = Workshop.create([
     start_time: "10:00 AM",
     end_time: "3:00 PM",
     total_sits: 100,
-    remaining_sits: 0,
+    remaining_sits: 10,
     registration_fee: 1500,
   },
   {
@@ -173,7 +173,7 @@ workshops = Workshop.create([
     start_time: "10:00 AM",
     end_time: "3:00 PM",
     total_sits: 100,
-    remaining_sits: 0,
+    remaining_sits: 100,
     registration_fee: 1500,
   },
 
