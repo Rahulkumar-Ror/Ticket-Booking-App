@@ -2,6 +2,19 @@ class WorkshopsController < ApplicationController
   before_action :authenticate_view!
   before_action :auth_admin, only: [:new, :create]
   before_action :initialize_session
+
+  def add_to_cart
+    id = params[:id].to_i
+    session[:cart] << id unless session[:cart].include?(id)
+    redirect_to workshops_path
+  end
+
+  def remove_from_cart
+    id = params[:id].to_i
+    session[:cart].delete(id)
+    redirect_to workshops_path
+  end
+
   def index
     # @workshops = Workshop.upcoming_workshops
     @q = Workshop.ransack(params[:name])

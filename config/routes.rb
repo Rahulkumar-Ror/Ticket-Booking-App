@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # get 'workshops#carts/:id'
   devise_for :views, controllers: {
     sessions: 'views/sessions',
     password:  'views/passwords' 
@@ -6,10 +7,14 @@ Rails.application.routes.draw do
   root "homes#index"
   # delete 'views/sign_out', to: 'devise/sessions#destroy'
   # get "workshops/new"
-  post 'workshops/add_to_cart/:id', to: 'workshops#add_to_cart', as: 'add_to_cart'
-  delete 'workshops/remove_form_cart/:id', to: 'workshops#remove_from_cart', as:  'remove_from_cart'
+
+  post "workshops/add_to_cart/:id", to: "workshops#add_to_cart", as: "add_to_cart"
+  delete "workshops/remove_from_cart/:id", to: "workshops#remove_from_cart", as: "remove_from_cart"
+  # post 'workshops/cart/:id', to: 'carts#show', as: 'add_to_cart'
+  # delete 'workshops/remove_form_cart/:id', to: 'workshops#remove_from_cart', as:  'remove_from_cart'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :workshops, only: %i[index show new create]
+  resources :carts, only: %i[show]
   resources :bookings, only: %i[create] do
     get :booking_details, on: :member
   end

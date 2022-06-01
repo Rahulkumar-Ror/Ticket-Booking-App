@@ -1,5 +1,21 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :initialize_session
+  before_action :load_cart
+
+  private
+
+  def initialize_session
+    session[:cart] ||= [] # empty cart = empty array
+  end
+  
+  def load_cart
+    # @workshop = Workshop.all
+    @cart = Workshop.all
+    # binding.pry
+    # @cart = Workshop.find(session[:cart])
+    
+  end
 
 	protected 
 

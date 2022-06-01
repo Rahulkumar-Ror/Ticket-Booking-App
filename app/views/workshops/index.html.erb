@@ -1,7 +1,7 @@
 <div class = "col-lg-12">
   <h3 class="mt-4 mb-4">Listing Workshops</h3>
   <div class="fa fa-user">
-  <%= debug session[:cart] %>
+  <%= link_to "cart", cart_path(@cart) %>
   <%= link_to "Search Workshop", "#offcanvasExample", data: { bs_toggle: "offcanvas" }, area: { controls: "offcanvasExample", role: "button"} , class: "btn btn-primary btn-lg"  %>
 
   <%= link_to "Export Employee", workshops_path(format: :csv), class: "btn btn-warning btn-lg" %>
@@ -42,7 +42,16 @@
                 <h4><span class="badge bg-warning"><%= workshop.total_duration %></span></h4>
                 <h4><span class="badge bg-success"> <%= workshop.daily_duration %></span></h4>
               <%= link_to "View Details", workshop, class: "btn btn-danger btn-md" %>
-              <p><%= link_to 'add to card', add_to_cart_path(workshop.id), method: :post %></p>
+              <p><%= link_to 'add to cart', add_to_cart_path(workshop.id), method: :post %></p>
+         
+         
+         <% if @cart.include?(workshop) %>
+  <%= button_to "Remove from cart", remove_from_cart_path(workshop), method: :delete %>
+<% else %>
+  <%= button_to "Add to cart", add_to_cart_path(workshop) %>
+<% end %>
+         
+         
           </div>
         </div>
       </div>
