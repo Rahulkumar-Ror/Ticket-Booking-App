@@ -1,5 +1,5 @@
 class WorkshopsController < ApplicationController
-  before_action :authenticate_view!
+  # before_action :authenticate_view!
   before_action :auth_admin, only: [:new, :create]
   before_action :initialize_session
 

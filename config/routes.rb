@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   resources :bookings, only: %i[create] do
     get :booking_details, on: :member
   end
+
+  namespace :admin do
+    get 'dashboard' => 'dashboard#index'
+  end
   # Defines the root path route ("/")
   # root "articles#index"
 end

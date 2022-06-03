@@ -1,11 +1,11 @@
 class Booking < ApplicationRecord
+  has_many :refunds
   belongs_to :customer
   belongs_to :workshop
-
+  
   validates :order_number, presence: true, uniqueness: true
 
   before_validation :generate_order_number
-
   after_create :update_workshop_sit_count
 
   def update_workshop_sit_count

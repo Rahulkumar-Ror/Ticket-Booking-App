@@ -31,7 +31,7 @@
             <li><%= link_to 'Sign Out', destroy_view_session_path, class: "dropdown-item", data: { turbo_method: :delete } %></li>
             <li><%= link_to 'Edit Profile', edit_view_registration_path, class: "dropdown-item" %></li>
           <hr>
-            <lead style="color:red;" > <%= current_view.email %> 🟢 <b> <%= current_view.role %></b></lead></li>
+            <lead style="color:red;" class="text-center" ><b> <%= current_view.email %> </b></lead></li>
           <% else %>
             <li><%= link_to 'Sign In', new_view_session_path, class: "dropdown-item" %></li>
             <li><%= link_to 'Sign Up', new_view_registration_path, class: "dropdown-item" %></li>
