@@ -1,6 +1,6 @@
 class WorkshopsController < ApplicationController
   # before_action :authenticate_view!
-  before_action :auth_admin, only: [:new, :create]
+  # before_action :auth_admin, only: [:new, :create]
   before_action :initialize_session
 
   def add_to_cart
@@ -16,7 +16,7 @@ class WorkshopsController < ApplicationController
   end
 
   def index
-    # @workshops = Workshop.upcoming_workshops
+    @workshops = Workshop.upcoming_workshops
     @q = Workshop.ransack(params[:name])
     @workshops = @q.result(distinct: true)
     respond_to do |format|

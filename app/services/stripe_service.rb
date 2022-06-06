@@ -2,6 +2,7 @@ require "stripe"
 
 class StripeService
   def initialize()
+    # binding.pry
     Stripe.api_key = ENV["STRIPE_SECRET_KEY"]
   end
 

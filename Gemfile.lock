@@ -298,6 +298,7 @@ DEPENDENCIES
   dotenv-rails
   font-awesome-sass
   friendly_id (~> 5.4.0)
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   letter_opener

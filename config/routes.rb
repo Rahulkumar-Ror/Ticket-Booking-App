@@ -15,10 +15,11 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :workshops, only: %i[index show new create]
   resources :carts, only: %i[show]
+  resources :refunds
   resources :bookings, only: %i[create] do
     get :booking_details, on: :member
   end
-
+  
   namespace :admin do
     get 'dashboard' => 'dashboard#index'
   end

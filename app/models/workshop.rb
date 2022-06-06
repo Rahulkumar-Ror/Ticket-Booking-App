@@ -1,9 +1,11 @@
 class Workshop < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
+  # has_rich_text :description
   # mount_uploader :video, VideoUploader
   has_one_attached :clip 
   has_one_attached :thumbnail 
+  
   has_many :bookings
   has_many :customers, through: :bookings
   belongs_to :view
