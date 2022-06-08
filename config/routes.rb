@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # get 'workshops#carts/:id'
+
   devise_for :views, controllers: {
+    omniauth_callbacks: 'views/omniauth_callbacks',
     sessions: 'views/sessions',
     password:  'views/passwords' 
   }
@@ -13,7 +15,10 @@ Rails.application.routes.draw do
   # post 'workshops/cart/:id', to: 'carts#show', as: 'add_to_cart'
   # delete 'workshops/remove_form_cart/:id', to: 'workshops#remove_from_cart', as:  'remove_from_cart'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :workshops, only: %i[index show new create]
+  resources :workshops, only: %i[index show new create] do
+    resources :comments 
+  end
+  
   resources :carts, only: %i[show]
   resources :refunds
   resources :bookings, only: %i[create] do

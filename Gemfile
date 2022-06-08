@@ -60,6 +60,7 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   gem "rails_live_reload"
+  gem "better_errors"
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
@@ -81,3 +82,6 @@ gem "ransack"
 gem 'font-awesome-sass'
 gem 'devise'
 gem 'carrierwave'
+gem "bulma-rails", "~> 0.9.3"
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem "omniauth-rails_csrf_protection"

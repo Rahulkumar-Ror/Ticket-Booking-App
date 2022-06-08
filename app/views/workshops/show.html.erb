@@ -16,6 +16,11 @@
     </div>
 		<p class="lead mt-3 mb-3"><%= @workshop.description %>
 		</p>
+    <br>
+    <h2> <%= @workshop.comments.count %> Comments</h2>
+      <%= render @workshop.comments %>
+      <h3>Add a comment: </h3>
+      <%= render 'comments/form' %>
 		<%= link_to "Back to workshops", workshops_path, class: "btn btn-outline-danger btn-lg mt-3" %>
   </div>
 </div>

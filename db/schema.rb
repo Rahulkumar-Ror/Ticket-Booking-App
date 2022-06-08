@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_05_113225) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_08_103345) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -65,6 +65,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_05_113225) do
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "name"
+    t.text "body"
+    t.integer "workshop_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["workshop_id"], name: "index_comments_on_workshop_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -158,6 +167,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_05_113225) do
     t.string "slug"
     t.string "video"
     t.integer "view_id"
+    t.integer "comment_id"
+    t.index ["comment_id"], name: "index_workshops_on_comment_id"
     t.index ["slug"], name: "index_workshops_on_slug", unique: true
     t.index ["view_id"], name: "index_workshops_on_view_id"
   end
@@ -166,6 +177,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_05_113225) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "customers"
   add_foreign_key "bookings", "workshops"
+  add_foreign_key "comments", "workshops"
   add_foreign_key "refunds", "bookings"
   add_foreign_key "refunds", "customers"
   add_foreign_key "workshops", "views"

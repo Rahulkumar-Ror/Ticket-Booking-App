@@ -5,8 +5,9 @@ class Workshop < ApplicationRecord
   # mount_uploader :video, VideoUploader
   has_one_attached :clip 
   has_one_attached :thumbnail 
-  
+
   has_many :bookings
+  has_many :comments
   has_many :customers, through: :bookings
   belongs_to :view
   validates :name, :description, presence: true

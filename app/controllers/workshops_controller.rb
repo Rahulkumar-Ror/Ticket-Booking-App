@@ -59,6 +59,7 @@ class WorkshopsController < ApplicationController
   # end
 
   def show
+    
     @workshop = Workshop.friendly.find(params[:id])
     session[:visit_count] ||= 0
     session[:visit_count] += 1
