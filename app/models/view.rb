@@ -8,6 +8,7 @@ class View < ApplicationRecord
 
   def self.from_omniauth(access_token)
     data = access_token.info
+    # binding.pry
     view = View.where(email: data['email']).first
     unless view
       view = View.create(

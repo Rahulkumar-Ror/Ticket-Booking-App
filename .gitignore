@@ -35,3 +35,6 @@
 /config/master.key
 .env
 /config/initializers/devise.rb
+
+
+

@@ -4,11 +4,21 @@
       <div class = "col-lg-6">
         <div class="card shadow mb-3 mt-2">
           <div class = "card-body">
-            <h4 class = "card-title"><%= workshop.name %></h4>
+            <header class = "card-header my-3">
+              <h4 class = "card-header-title"><%= workshop.name %></h4>
+              <p style="color:red;">
+                <span class="badge bg-danger">Uploaded</span> <span class="badge bg-success"> <%= time_tag workshop.created_at, "data-local":"time-ago" %>
+              </span></p>  
+              </header>
+              <div class="card-content">
+              <div class="content">
               <p class="lead"><%= truncate(workshop.description, length: 50) %></p>
                 <h4><span class="badge bg-warning"><%= workshop.total_duration %></span></h4>
                 <h4><span class="badge bg-success"> <%= workshop.daily_duration %></span></h4>
+                <hr>
               <%= link_to "View Details", workshop, class: "btn btn-danger btn-md" %>
+          </div>
+          </div>
           </div>
         </div>
       </div>

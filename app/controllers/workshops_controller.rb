@@ -16,9 +16,13 @@ class WorkshopsController < ApplicationController
   end
 
   def index
-    @workshops = Workshop.upcoming_workshops
-    @q = Workshop.ransack(params[:name])
-    @workshops = @q.result(distinct: true)
+    @q = Workshop.ransack(params[:q])
+    @course1s = @q.result(distinct: true)
+ 
+    @workshops = Workshop.all
+    # @workshops = Workshop.upcoming_workshops
+    # @q = Workshop.ransack(params[:name])
+    # @workshops = @q.result(distinct: true)
     respond_to do |format|
       format.html
       format.csv {
