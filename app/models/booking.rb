@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
-  has_many :refunds
+  has_many :refunds, dependent: :destroy
   belongs_to :customer
   belongs_to :workshop
   

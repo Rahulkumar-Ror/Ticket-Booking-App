@@ -1,0 +1,85 @@
+<!-- Button trigger modal -->
+
+<%= link_to 'Book your slot', new_booking_path, class: "btn btn-info btn-lg mb-4", method: :get, data: { bs_toggle: 'modal', bs_target: '#newUserModal', remote: true } %>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="newUserModal" tabindex="-1" aria-labelledby="newUserModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title card-title mb-2" id="newUserModalLabel">Reserve your sit now 🔖🔖  </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+			<div id= "newUserForm" >
+      </div>
+   
+    
+
+    <div class="modal-body">
+    <% if @workshop.is_upcoming_workshop? %>
+		    <%= form_with url: :bookings,  data: { turbo: false }, local: false do |form| %>
+
+        <%= form.hidden_field :workshop_id, value: @workshop.id %>
+      <div class= "form-group">
+        <%= form.label :full_name, class: "mb-2 mt-2" %>
+        <%= form.text_field :full_name, class: "form-control", required: true %>
+      </div>
+      <div class= "form-group">
+        <%= form.label :email, class: "mb-2 mt-2" %>
+        <%= form.text_field :email, class: "form-control", required: true %>
+      </div>
+      <div class= "form-group">
+        <%= form.label :contact_number, class: "mb-2 mt-2" %>
+        <%= form.text_field :contact_number, class: "form-control", required: true %>
+      </div>
+      <div class= "form-group">
+        <%= form.label :no_of_seat_you_want_to_book, class: "mb-2 mt-2" %>
+        <%= form.number_field :no_of_tickets, class: "form-control", required: true, min: 1, max: @workshop.remaining_sits %>
+      </div>
+      <h4 class="mt-4 mb-3">Card Details</h4>
+      <hr>
+      <div class= "form-group">
+        <%= form.label :card_number, class: "mb-2 mt-2" %>
+        <%= form.text_field :card_number, class: "form-control", required: true %>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class= "form-group">
+            <%= form.label :cvv, class: "mb-2 mt-2" %>
+            <%= form.text_field :cvv, class: "form-control", required: true, maxlength: 4 %>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class= "form-group">
+            <%= form.label :month, class: "mb-2 mt-2" %>
+            <%= form.number_field :exp_month, class: "form-control", required: true, min: 1, max: 12 %>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class= "form-group">
+            <%= form.label :year, class: "mb-2 mt-2" %>
+            <%= form.number_field :exp_year, class: "form-control", required: true, min: 2022, max: 2026 %>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-grid gap-2">
+        <%= form.submit "Book your ticket now", class: "btn btn-outline-danger btn-lg mt-3" %>
+      </div>
+      <% end %>
+      <% else %>
+      <h4 class = "card-title mb-2" Workskhop is already taken!</h4>
+    <% end %>
+    
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+		</div>
+	</div>
+</div>
+</div>
+

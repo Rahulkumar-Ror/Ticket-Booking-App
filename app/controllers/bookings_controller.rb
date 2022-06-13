@@ -28,6 +28,7 @@ class BookingsController < ApplicationController
     else
       @stripe_service.create_stripe_refund(@charge.id)
       redirect_to workshop_path(@workshop), notice: "Something went wrong ❎❎.. Don't worry your money will be refunded shortly"
+      
     end
 
   rescue Stripe::StripeError => error

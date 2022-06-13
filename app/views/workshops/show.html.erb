@@ -1,5 +1,8 @@
 <p> You visited this course <%= pluralize @visit_count, 'time' %>.</p>
-<div class="col-lg-8">
+
+<%= render "workshops/formmodal" %>
+
+<div class="col-lg-12">
   <div class = "card shadow my-3">
     <div class="card-body">
     <div class="card-title"><%= @workshop.name %></h4>
@@ -16,74 +19,11 @@
     </div>
 		<p class="lead mt-3 mb-3"><%= @workshop.description %>
 		</p>
-    <br>
-    <h2> <%= @workshop.comments.count %> Comments</h2>
-      <%= render @workshop.comments %>
-      <h3>Add a comment: </h3>
-      <%= render 'comments/form' %>
+
+    <%= render "workshops/comment" %>
+
 		<%= link_to "Back to workshops", workshops_path, class: "btn btn-outline-danger btn-lg mt-3" %>
   </div>
 </div>
 </div>
-</div>
-<div class="col-lg-4 mt-4">
-  <div class="card shadow mb-3">
-	  <div class="card-body">
-    <% if @workshop.is_upcoming_workshop? %>
-		  <h4 class="card-title mb-2">Reserve your sit now!</h4>
-		    <%= form_with url: :bookings, data: { turbo: false } do |form| %>
-		  	<%= form.hidden_field :workshop_id, value: @workshop.id %>
-      <div class= "form-group">
-        <%= form.label :full_name, class: "mb-2 mt-2" %>
-        <%= form.text_field :full_name, class: "form-control", required: true %>
-      </div>
-      <div class= "form-group">
-        <%= form.label :email, class: "mb-2 mt-2" %>
-        <%= form.text_field :email, class: "form-control", required: true %>
-      </div>
-      <div class= "form-group">
-        <%= form.label :contact_number, class: "mb-2 mt-2" %>
-        <%= form.text_field :contact_number, class: "form-control", required: true %>
-      </div>
-      <div class= "form-group">
-        <%= form.label :no_of_seat_you_want_to_book, class: "mb-2 mt-2" %>
-        <%= form.number_field :no_of_tickets, class: "form-control", required: true, min: 1, max: @workshop.remaining_sits %>
-      </div>
-      <h4 class="mt-4 mb-3">Card Details</h4>
-      <hr>
-      <div class= "form-group">
-        <%= form.label :card_number, class: "mb-2 mt-2" %>
-        <%= form.text_field :card_number, class: "form-control", required: true %>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-6">
-          <div class= "form-group">
-            <%= form.label :cvv, class: "mb-2 mt-2" %>
-            <%= form.text_field :cvv, class: "form-control", required: true, maxlength: 4 %>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class= "form-group">
-            <%= form.label :month, class: "mb-2 mt-2" %>
-            <%= form.number_field :exp_month, class: "form-control", required: true, min: 1, max: 12 %>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class= "form-group">
-            <%= form.label :year, class: "mb-2 mt-2" %>
-            <%= form.number_field :exp_year, class: "form-control", required: true, min: 2022, max: 2026 %>
-          </div>
-        </div>
-      </div>
-
-      <div class="d-grid gap-2">
-        <%= form.submit "Book your ticket now", class: "btn btn-outline-danger btn-lg mt-3" %>
-      </div>
-      <% end %>
-      <% else %>
-      <h4 class = "card-title mb-2" Workskhop is already taken!</h4>
-    <% end %>
-		</div>
-	</div>
 </div>

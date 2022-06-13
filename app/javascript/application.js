@@ -5,3 +5,11 @@ import "controllers"
 //= require jquery_ujs
 //= require turbolinks import "trix"
 import "@rails/actiontext"
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var buttonElement = document.getElementById('click');
+    buttonElement.addEventListener('click', function(event){
+      console.log('An event was triggered: ' + event.type);  
+    });
+});

@@ -1,14 +1,16 @@
 class Workshop < ApplicationRecord
+  validates :name, :description, :start_date, :end_date, :start_time, :end_time, presence: true
   extend FriendlyId
   friendly_id :name, use: :slugged
+  
   # has_rich_text :description
   # mount_uploader :video, VideoUploader
   has_one_attached :clip 
   has_one_attached :thumbnail 
 
-  has_many :bookings
-  has_many :comments
-  has_many :customers, through: :bookings
+  has_many :bookings, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :customers, through: :bookings, dependent: :destroy
   belongs_to :view
   validates :name, :description, presence: true
   validates :start_date, :end_date, :start_time, :end_time, presence: true

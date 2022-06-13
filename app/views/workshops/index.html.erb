@@ -1,14 +1,14 @@
 <div class = "col-lg-12">
-  <h3 class="mt-4 mb-4">Books Available!</h3>
+
   <div class="fa fa-user">
- 
-  <h1>Hello, Rails!</h1>
-  <button id="greet-user-button">Hello!</button>
+
+  <button id="click">Hello!</button>
+  <div data-controller="hello"></div>
 
   <%= link_to "cart", cart_path(@cart) %>
   <%= render "workshops/search" %>
   <div class="row">
-  <div class="columns mt-6 is-centered my-3">
+  <div class="col-lg-9">
     <% @workshops.each do |workshop| %>
       <div class = "column is-one-quarter my-3">
         <div class="card ">

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'ajax/index'
   # get 'workshops#carts/:id'
 
   devise_for :views, controllers: {
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
   
   resources :carts, only: %i[show]
   resources :refunds
-  resources :bookings, only: %i[create] do
+  resources :bookings, only: %i[ new create] do
     get :booking_details, on: :member
   end
   

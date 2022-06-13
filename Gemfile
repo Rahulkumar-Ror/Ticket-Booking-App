@@ -54,6 +54,9 @@ group :development, :test do
   gem "dotenv-rails"
   gem "letter_opener"
   gem "pry"
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem "faker"
 end
 
 group :development do
@@ -85,3 +88,5 @@ gem 'carrierwave'
 gem "bulma-rails", "~> 0.9.3"
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 gem "omniauth-rails_csrf_protection"
+gem 'webpacker'
+gem 'rails-controller-testing'

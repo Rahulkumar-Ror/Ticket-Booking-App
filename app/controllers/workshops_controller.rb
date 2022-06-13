@@ -37,11 +37,16 @@ class WorkshopsController < ApplicationController
     # binding.pry
   end
 
+  def edit
+    @workshop = Workshop.friendly.find(params[:id])
+    # @workshop.view_id = current_view.id
+    # binding.pry
+  end
+
   def create
     # binding.pry
     @workshop = Workshop.new(workshop_params)
-    # @workshop.view_id = current_view.admin_id
-    # binding.pry
+ 
     if @workshop.save
       # UserMailer.with(workshop: @user).welcome_email.deliver_later
       flash[:notice] = "Course successfully created"
@@ -63,7 +68,6 @@ class WorkshopsController < ApplicationController
   # end
 
   def show
-    
     @workshop = Workshop.friendly.find(params[:id])
     session[:visit_count] ||= 0
     session[:visit_count] += 1
@@ -72,11 +76,10 @@ class WorkshopsController < ApplicationController
 
   private 
   def workshop_params
-    params.require(:user).permit(:name, :description, :start_date, :end_date, :start_time, :end_time, :total_sits, :remaining_sits, :registration_fee, :clip, :thumbnail)
+    params.require(:workshop).permit(:name, :description, :start_date, :end_date, :start_time, :end_time, :total_sits, :remaining_sits, :registration_fee)
   end
 
   def initialize_session
-    # session[:visit_count] ||= []
     session[:cart] ||= []
   end
   
