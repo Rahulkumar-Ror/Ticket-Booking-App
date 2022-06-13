@@ -1,0 +1,29 @@
+<p> You visited this course <%= pluralize @visit_count, 'time' %>.</p>
+
+<%= render "workshops/formmodal" %>
+
+<div class="col-lg-12">
+  <div class = "card shadow my-3">
+    <div class="card-body">
+    <div class="card-title"><%= @workshop.name %></h4>
+    <div class="row mt-3">
+    <div class="col-lg-7">
+      <h4><span class="badge bg-warning"><%= @workshop.total_duration %></span></h4>
+      <h4><span class="badge bg-success"> <%= @workshop.daily_duration %></span></h4>
+    </div>
+    <div class="col-lg-5">
+		  <h4> Total Sits: <span class = "badge bg-primary"><%= @workshop.total_sits %></span></h4>
+		  <h4> Remaining Sits: <span class = "badge bg-primary"><%= @workshop.remaining_sits %></span></h4>
+		  <h4> Registation Fee: <span class = "badge bg-primary"><%= @workshop.registration_fee %></span></h4>
+    </div>
+    </div>
+		<p class="lead mt-3 mb-3"><%= @workshop.description %>
+		</p>
+
+    <%= render "workshops/comment" %>
+
+		<%= link_to "Back to workshops", workshops_path, class: "btn btn-outline-danger btn-lg mt-3" %>
+  </div>
+</div>
+</div>
+</div>

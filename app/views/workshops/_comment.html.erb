@@ -1,0 +1,6 @@
+<br>
+  <h2> <%= @workshop.comments.count %> Comments</h2>
+    <%= render @workshop.comments %>
+   <h3>Add a comment: </h3>
+    <%= render 'comments/form' %>
+</br>
