@@ -5,7 +5,7 @@ class View < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :trackable, :omniauthable, omniauth_providers: [:github]
-  include DeviseTokenAuth::Concerns::User
+  include DeviseTokenAuth::Concerns::View
   has_many :workshops, dependent: :destroy
 
   def self.from_omniauth(access_token)
