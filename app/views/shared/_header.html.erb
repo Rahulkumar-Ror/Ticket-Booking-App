@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-primary bg-dark">
+  <div class="container-fluid">
+  
+    <a class="navbar-brand text-white fw-bold" ><i class=" fa-fa-book"></i> Course Mania</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="localhost:3000">📚 Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/workshops">All course</a>
+        </li>
+   
+          <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">💬 Contact us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/workshops/new"> ➕ Add new course</a>
+        </li>
+        
+      
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            ⚙️ Settings
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% if view_signed_in? %>
+            <li><%= link_to 'Sign Out', destroy_view_session_path, class: "dropdown-item", data: { turbo_method: :delete } %></li>
+            <li><%= link_to 'Edit Profile', edit_view_registration_path, class: "dropdown-item" %></li>
+          <hr>
+            <lead style="color:red;" class="text-center" ><b> <%= current_view.email %> </b></lead></li>
+          <% else %>
+            <li><%= link_to 'Sign In', new_view_session_path, class: "dropdown-item" %></li>
+            <li><%= link_to 'Sign Up', new_view_registration_path, class: "dropdown-item" %></li>
+          <% end %>    
+        </li>
+      </ul>
+    
+    </div>
+  </div>
+</nav>
+
