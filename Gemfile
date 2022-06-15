@@ -61,7 +61,7 @@ end
 
 group :production do
   gem 'pg'
-  gem 'mini_racer'
+  gem "rails_12factor"
 end
 
 group :development do
@@ -82,6 +82,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
 gem "cssbundling-rails"
 gem "stripe"
 gem "rqrcode", "~> 2.0"

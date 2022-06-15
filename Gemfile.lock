@@ -173,7 +173,6 @@ GEM
       addressable (~> 2.7)
     letter_opener (1.8.1)
       launchy (>= 2.2, < 3)
-    libv8-node (16.10.0.0-x86_64-linux)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -187,8 +186,6 @@ GEM
     method_source (1.0.0)
     mini_magick (4.11.0)
     mini_mime (1.1.2)
-    mini_racer (0.6.2)
-      libv8-node (~> 16.10.0.0)
     minitest (5.15.0)
     msgpack (1.5.1)
     multi_json (1.15.0)
@@ -265,9 +262,14 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
     rails_live_reload (0.1.2)
       listen
       rails
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (7.0.3)
       actionpack (= 7.0.3)
       activesupport (= 7.0.3)
@@ -405,7 +407,6 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   letter_opener
-  mini_racer
   omniauth-github!
   omniauth-rails_csrf_protection
   pg
@@ -413,6 +414,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.3)
   rails-controller-testing
+  rails_12factor
   rails_live_reload
   ransack
   redis (~> 4.0)
