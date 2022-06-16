@@ -1,11 +1,11 @@
 class View < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  extend Devise::Models
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :trackable, :omniauthable, omniauth_providers: [:github]
-  include DeviseTokenAuth::Concerns::View
+
   has_many :workshops, dependent: :destroy
 
   def self.from_omniauth(access_token)
