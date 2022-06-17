@@ -12,7 +12,11 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder: "abcde@gmail.com" , class: 'form-control'%>
   </div>
-
+  
+  <div>
+    <%= f.label :role %><br/>
+    <%= f.select :role, ['Admin', 'Customer'] %><br/>
+  </div>
 
   <div class="form-group">
     <%= f.label :password %>

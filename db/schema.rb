@@ -70,9 +70,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_08_103345) do
   create_table "comments", force: :cascade do |t|
     t.string "name"
     t.text "body"
+    t.integer "view_id", null: false
     t.integer "workshop_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["view_id"], name: "index_comments_on_view_id"
     t.index ["workshop_id"], name: "index_comments_on_workshop_id"
   end
 
@@ -177,6 +179,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_08_103345) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "customers"
   add_foreign_key "bookings", "workshops"
+  add_foreign_key "comments", "views"
   add_foreign_key "comments", "workshops"
   add_foreign_key "refunds", "bookings"
   add_foreign_key "refunds", "customers"

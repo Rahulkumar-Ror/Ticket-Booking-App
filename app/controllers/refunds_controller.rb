@@ -24,4 +24,7 @@ class RefundsController < ApplicationController
 		  redirect_to new_refund_path, alert: "You provided invalid booking ID #{ params[:refund][:order_number] }. We found no booking with this booking id. PLease provide valid booking ID."
 		end
 	end
+	def update 
+	
+	end
 end

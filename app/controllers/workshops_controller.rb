@@ -1,6 +1,7 @@
 class WorkshopsController < ApplicationController
-  # before_action :authenticate_view!
-  # before_action :auth_admin, only: [:new, :create]
+  before_action :authenticate_view!
+  before_action :auth_admin, only: [:new, :create, :edit, :update]
+  before_action :delete_admin, only: [:destroy]
   before_action :initialize_session
 
   def add_to_cart
@@ -37,17 +38,28 @@ class WorkshopsController < ApplicationController
     # binding.pry
   end
 
-  def edit
+  def edit 
     @workshop = Workshop.friendly.find(params[:id])
-    # @workshop.view_id = current_view.id
-    # binding.pry
   end
 
-  def create
-    # binding.pry
+  def update
+    @workshop = Workshop.friendly.find(params[:id])
+    @workshop.update(workshop_params)
+    if @workshop.valid?
+      redirect_to workshops_path
+    else
+      flash[:errors] = @workshop.errors.full_messages
+      redirect_to edit_workshop_path
+    end
+  end
+
+  def create 
     @workshop = Workshop.new(workshop_params)
- 
+    @workshop.view_id = current_view.id
+   
+    # binding.pry
     if @workshop.save
+      # binding.pry
       TestRunJob.perform_later("Hi")
       # UserMailer.with(workshop: @user).welcome_email.deliver_later
       flash[:notice] = "Course successfully created"
@@ -58,6 +70,17 @@ class WorkshopsController < ApplicationController
     end
   end
 
+  def edit
+    @workshop = Workshop.friendly.find(params[:id])
+  end
+
+  def destroy
+    @workshop = Workshop.friendly.find(params[:id])
+    @workshop.destroy
+    redirect_to workshop_path
+    
+  end 
+  
   def add_to_cart
     session[:cart] << params[:id]
     redirect_to root_path

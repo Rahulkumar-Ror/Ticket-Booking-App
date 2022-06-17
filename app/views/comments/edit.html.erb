@@ -1,0 +1,20 @@
+<div class="col-lg-6">
+<div class="card">
+
+<%= form_for([@workshop, @workshop.comments.build]) do |f| %>
+
+  <p>
+    <%= f.label :User_name, class: "mt-2" %><br>
+    <%= f.text_field :name, class: "form-control my-2" %>
+	</p>
+	<p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body, class: "form-control my-2" %>
+	</p>
+
+	<div class="d-grid gap-2 my-3">
+    <%= f.submit "Post Comment", class: "btn btn-outline-warning btn-lg  " %>
+	</div>
+<% end %>
+</div>
+</div>

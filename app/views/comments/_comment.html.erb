@@ -1,7 +1,9 @@
-<span class="badge bg-danger"><%= comment.name %></span>
+<span class="badge bg-danger"><%= comment.view.role %></span><span class="badge bg-info"><%= comment.view.email %></span>
+<p><%= comment.name %></p>
 <p><%= comment.body %></p>
 <span class="badge bg-primary"><%= time_ago_in_words(comment.created_at) %></span>
+<% if current_view && current_view == comment.view %>
 
 <p><%= button_to 'Delete' ,[comment.workshop, comment], method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, class: "btn btn-danger btn-sm" %></p>
 
-
+<% end %>

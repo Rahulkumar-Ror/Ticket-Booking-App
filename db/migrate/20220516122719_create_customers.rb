@@ -5,7 +5,8 @@ class CreateCustomers < ActiveRecord::Migration[7.0]
       t.string :email
       t.string :contact_number
       t.string :stripe_customer_id
-
+      
+      
       t.timestamps
     end
   end

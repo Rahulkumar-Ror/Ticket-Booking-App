@@ -37,7 +37,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+
 
   config.action_mailer.perform_caching = false
 
@@ -64,8 +64,19 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
-  config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'gmail.com',
+    user_name:            'rahulecengg322@gmail.com',
+    password:             'etkuegqpvsciailn',
+    authentication:       'plain',
+    enable_starttls_auto: true,
+  }
   # Uncomment if you wish to allow Action Cable access from any origin.
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # config.action_cable.disable_request_forgery_protection = true

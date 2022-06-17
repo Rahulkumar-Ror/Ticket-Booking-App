@@ -23,10 +23,17 @@
               <p class="lead"><%= truncate(workshop.description, length: 50) %></p>
                 <h4><span class="badge bg-warning"><%= workshop.total_duration %></span></h4>
                 <h4><span class="badge bg-success"> <%= workshop.daily_duration %></span></h4>
+              <br><hr>
+              <table>
+              <tr>
+              <%= link_to "View Details", workshop, class: "btn btn-success btn-md btn-sm" %> |
+              <%= button_to "Delete Course", workshop_path(workshop.id), method: :delete, class: "btn btn-danger btn-md btn-sm" %> |
+              <%= button_to "Edit Course", edit_workshop_path(workshop), method: :get, class: "btn btn-info btn-md btn-sm" %></h3>
+              </tr>
+              </table>
               
-              <%= link_to "View Details", workshop, class: "btn btn-danger btn-md" %>
               <p><%= link_to 'add to cart', add_to_cart_path(workshop.id), method: :post %></p>
-                 
+
                 <% if @cart.include?(workshop) %>
                   <%= button_to "Remove from cart", remove_from_cart_path(workshop), method: :delete %>
                 <% else %>

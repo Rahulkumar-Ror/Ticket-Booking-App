@@ -1,13 +1,11 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
+  
+  devise_for :views, controllers: {
+    omniauth_callbacks: 'views/omniauth_callbacks'
+  }
   get 'ajax/index'
   # get 'workshops#carts/:id'
-
-  devise_for :views, controllers: {
-    omniauth_callbacks: 'views/omniauth_callbacks',
-    sessions: 'views/sessions',
-    password:  'views/passwords' 
-  }
   root "homes#index"
   # delete 'views/sign_out', to: 'devise/sessions#destroy'
   # get "workshops/new"
@@ -17,7 +15,7 @@ Rails.application.routes.draw do
   # post 'workshops/cart/:id', to: 'carts#show', as: 'add_to_cart'
   # delete 'workshops/remove_form_cart/:id', to: 'workshops#remove_from_cart', as:  'remove_from_cart'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :workshops, only: %i[index show new create] do
+  resources :workshops, only: %i[index show new edit update create destroy] do
     resources :comments 
   end
   
