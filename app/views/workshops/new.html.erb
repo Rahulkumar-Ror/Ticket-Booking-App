@@ -1,47 +1,48 @@
-<div class="container my-3">
-<div class="row justify-content-center">
-<div class="col-19 my-4">
-<div class="card text-center shadow mb-5 bg-light">
-<%= form_with model: @workshop do |f| %>
+<div class=" col-lg-9 mx-lg-auto my-4">
+  <div class="card shadow">
+  <div class="card-header">
+  <h2 class="card-title text-center", style="color:red;">New Course</h2>
+<%= simple_form_for(@workshop) do |f| %>
   <div class="center">
-    <%= f.label :name , class: "form-group" %>
+    <%= f.label :name  %>
+   
     <%= f.text_field :name , class: "form-control" %>
   </div>
   <div class="center">
-    <%= f.label :description, class: "form-group" %>
-    <%= f.text_area :description  , class: "form-control"%>
+    <%= f.label :description %>
+    <%= f.text_area :description  , class: "form-control", rows: "5", cols: "100"%>
   </div>
   <div class="center">
-    <%= f.label :start_date, class: "form-group" %>
+    <%= f.label :start_date %>
     <%= f.date_field :start_date  , class: "form-control"%>
   </div>
   <div class="center">
-    <%= f.label :end_date, class: "form-group" %>
+    <%= f.label :end_date %>
     <%= f.date_field :end_date , class: "form-control" %>
-  </div>
+  </div><br>
+  <div  class="select optional form-control">
+    <%= f.input :start_time,  priority: ["10:00 AM"], collection: ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM"] %>
+  </div><br>
+  <div class="select optional form-control">
+    <%= f.input :end_time, priority: ["3:00 PM"], collection: ["1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"] %>
+  </div><br>
+
   <div class="center">
-    <%= f.label :start_time, class: "form-group" %>
-    <%= f.text_field :start_time , class: "form-control" %>
-  </div>
-  <div class="center">
-    <%= f.label :end_time, class: "form-group" %>
-    <%= f.text_field :end_time , class: "form-control" %>
-  </div>
-  <div class="center">
-    <%= f.label :total_sits, class: "form-group" %>
+    <%= f.label :total_sits %>
     <%= f.number_field :total_sits , class: "form-control" %>
   </div>
 
   <div class="center">
-    <%= f.label :remaining_sits, class: "form-group" %>
+    <%= f.label :remaining_sits %>
     <%= f.number_field :remaining_sits , class: "form-control" %>
   </div>
   <div class="center">
-    <%= f.label :registration_fee, class: "form-group" %>
+    <%= f.label :registration_fee %>
     <%= f.number_field :registration_fee , class: "form-control" %>
   </div>
 
-  <div class="center">
+  <div class="form-actions">
+
     <%= f.submit  class: "btn btn-primary my-3" %>
   </div>
 <% end %>

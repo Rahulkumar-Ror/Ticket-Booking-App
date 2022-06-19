@@ -1,0 +1,39 @@
+
+<h1>Users profile</h1>
+  <% @views.each do |role| %>
+  <% if view_signed_in? %>
+    <% if role.email == current_view.email %>
+  <div class="card"  style="width: 22rem;">
+  <div class="card-body">
+  <div class="card-header ">
+
+  <td><div style="color:green;">🟢 Available</div></td>
+  </div>
+  <table>
+    <tr>
+      <th>  <%= current_view.role %> 🙍 </th>  
+    </tr>
+    <tr>
+      <td><%= current_view.email  %></td>
+    </tr>
+    </table>
+    </div>
+    </div>
+    <% else %>
+  
+    <table>
+    <tr>
+      <th>Status</th>
+      <th>User Role</th>
+      <th>User Email-ID</th>
+    </tr>
+    <tr>
+      <td><div class="text-danger fa fa-circle">🔴 Not-available</div></td>
+      <td><%= role.role %></td>
+      <td><%= role.email %></td>
+    </tr>
+    </table>
+    <% end %>
+  <% end %>
+  <% end %>
+

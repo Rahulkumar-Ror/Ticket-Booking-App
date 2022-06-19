@@ -20,4 +20,9 @@ class View < ApplicationRecord
     end
     view
   end
+
+  after_create do
+    customer = Stripe::Customer.create(email: email)
+    update(stripe_customer_id: customer.id)
+  end
 end

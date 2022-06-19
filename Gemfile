@@ -101,3 +101,5 @@ gem "omniauth-rails_csrf_protection"
 gem 'webpacker'
 gem 'rails-controller-testing'
 gem "sidekiq"
+gem "simple_form"
+gem "font-awesome-rails"

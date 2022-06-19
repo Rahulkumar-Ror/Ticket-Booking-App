@@ -78,8 +78,11 @@ class WorkshopsController < ApplicationController
     @workshop = Workshop.friendly.find(params[:id])
     @workshop.destroy
     redirect_to workshop_path
-    
   end 
+
+  def profile
+    @view = View.all
+  end
   
   def add_to_cart
     session[:cart] << params[:id]
