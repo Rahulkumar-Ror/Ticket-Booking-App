@@ -1,0 +1,35 @@
+<h4 style="color:green;" class= "text-center mt-4" >Detail of each Customer :- </h4>
+
+<% @customers.each do |c| %>
+  
+<% if view_signed_in? %>
+<% if current_view.email == c.email%>
+<div class="container">
+  <div class="card my-4 text-center"  style="width: 52rem;">
+  <div class="card-body">
+  <div class="card-header ">
+  
+  <%= link_to c.full_name, user_detail_path(c.id, @workshop), method: :get  %><br>
+  <%= c.email %>
+  <% else %>
+
+	<% if current_view.role == "Admin" %>
+		<div class ="container my-4 ">
+		<div class="card text-center"  style="width: 42rem;">
+  <div class="card-body">
+  <div class="card-header ">
+  
+   <%= link_to c.full_name, user_detail_path(c.id, @workshop), method: :get  %><br>
+  <%= c.email %>
+	</div>
+	</div>
+	</div>
+<% end %>
+	</div>
+	</div>
+	</div>
+	</div>
+<% end %>
+<% end %>
+<% end %>
+

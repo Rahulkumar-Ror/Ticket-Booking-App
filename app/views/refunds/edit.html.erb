@@ -17,23 +17,7 @@
 <div class="col-lg-6 mt-5">
   <div class="card show">
     <div class="card-body">
-		  <h4>Your Booking Details</h4>
-			<p class="lead">
-			  <strong>Booking For:</strong>
-				<%= link_to @refund.booking.workshop.name, @refund.booking.workshop, target: '_blank' %>
-			</p>
-			<p class="lead">
-        <strong>Total Tickets Booked:</strong>
-				<%= @refund.booking.no_of_tickets %>
-			</p>
-			<p class="lead">
-        <strong>Amount Paid:</strong>
-				<%= @refund.booking.amount_paid %>
-			</p>
-			<p class="lead">
-        <strong>Booking Date:</strong>
-				<%= @refund.booking.created_at.strftime("%d %a %B, %Y") %>
-			</p>
+		  <%= render 'booking_details', workshop: @workshop, booking: @booking %>
 		</div>
   </div>
 </div>

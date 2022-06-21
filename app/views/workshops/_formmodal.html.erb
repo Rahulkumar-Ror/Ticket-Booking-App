@@ -1,8 +1,11 @@
 <!-- Button trigger modal -->
 
-<%= link_to 'Book your slot', new_booking_path, class: "btn btn-info btn-lg mb-4", method: :get, data: { bs_toggle: 'modal', bs_target: '#newUserModal', remote: true } %>
-
-
+<% if  @workshop.start_date > Date.today %>
+  <%= link_to 'Book your slot', new_booking_path, class: "btn btn-info btn-lg mb-4", method: :get, data: { bs_toggle: 'modal', bs_target: '#newUserModal', remote: true } %>
+<% else %>
+  <p style= "color: red;" class="text-center"> Sorry for the inconvenience !!! But the event registration Date is already over.. 🔒</p>
+  <p style= "color: green;" class="text-center">Your can go for the other Upcoming events...</p>
+<% end %>
 
 <!-- Modal -->
 <div class="modal fade" id="newUserModal" tabindex="-1" aria-labelledby="newUserModalLabel" aria-hidden="true">
@@ -26,10 +29,9 @@
         <%= form.label :full_name, class: "mb-2 mt-2" %>
         <%= form.text_field :full_name, class: "form-control", required: true %>
       </div>
-      <div class= "form-group">
-        <%= form.label :email, class: "mb-2 mt-2" %>
-        <%= form.text_field :email, class: "form-control", required: true %>
-      </div>
+    
+        <%= form.hidden_field :email, value: current_view.email , required: true %>
+      
       <div class= "form-group">
         <%= form.label :contact_number, class: "mb-2 mt-2" %>
         <%= form.text_field :contact_number, class: "form-control", required: true %>

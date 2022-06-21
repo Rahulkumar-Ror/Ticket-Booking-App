@@ -1,4 +1,5 @@
 class Admin::DashboardController < AdminController
+  before_action :auth_admin
   def index
     @workshop_count = Workshop.count
     @upcoming_workshop_count = Workshop.upcoming_workshops.count

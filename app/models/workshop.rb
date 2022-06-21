@@ -10,7 +10,7 @@ class Workshop < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :customers, through: :bookings, dependent: :destroy
+  has_many :customers, through: :bookings
   belongs_to :view
   validates :name, :description, presence: true
   validates :start_date, :end_date, :start_time, :end_time, presence: true

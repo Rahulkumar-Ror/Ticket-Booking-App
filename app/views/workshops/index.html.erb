@@ -2,10 +2,7 @@
 
   <div class="fa fa-user">
 
-  <button id="click">Hello!</button>
-  <div data-controller="hello"></div>
-
-  <%= link_to "cart", cart_path(@cart) %>
+  <% link_to "cart", cart_path(@cart) %>
   <%= render "workshops/search" %>
   <div class="row">
   <div class="col-lg-9">
@@ -15,7 +12,7 @@
           <header class = "card-header my-3">
             <h4 class = "card-header-title"><%= workshop.name %></h4>
             <p style="color:red;">
-                <span class="badge bg-danger">Uploaded</span> <span class="badge bg-success"> <%= time_tag workshop.created_at, "data-local":"time-ago" %>
+                <span class="badge bg-danger">Uploaded on</span> <span class="badge bg-success"> <%= time_tag workshop.created_at, "data-local":"time-ago" %>
               </span></p>  
               </header>
               <div class="card-content">
@@ -32,12 +29,12 @@
               </tr>
               </table>
               
-              <p><%= link_to 'add to cart', add_to_cart_path(workshop.id), method: :post %></p>
+              <p><% link_to 'add to cart', add_to_cart_path(workshop.id), method: :post %></p>
 
                 <% if @cart.include?(workshop) %>
-                  <%= button_to "Remove from cart", remove_from_cart_path(workshop), method: :delete %>
+                  <% button_to "Remove from cart", remove_from_cart_path(workshop), method: :delete %>
                 <% else %>
-                  <%= button_to "Add to cart", add_to_cart_path(workshop) %>
+                  <% button_to "Add to cart", add_to_cart_path(workshop) %>
                 <% end %>
           </div>
         </div>

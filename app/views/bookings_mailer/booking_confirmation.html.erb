@@ -1,23 +1,27 @@
 <div class = "col-lg-10 mx-auto">
   <div class = "card shadow">
     <div class = "card-header">
-      <h4 class="card-title">Booking confirmation</h4>
+      <h4 class="card-title" style= "color:blue;">Booking confirmation</h4>
     </div>
     <div class ="card-body">
       <h1>Greetings from <b>Course mania</b></h1>
-      <h3>Hello <%= @customer.full_name %></h3>
+      <h3 style= "color:blue;">Hello <%= @customer.full_name %></h3>
   
       <h3>Here is your booking id: <%= @booking.order_number %>. This booking id is unique per order and will be required for requesting refunds in case if you wish to cancel booking</h3>
 
+      <p style="color:red;"><b>Make sure you don't share this booking id publicity, because it's unique for you!</b></p>
+
       <p class="lead">Your booking for <strong><%= @workshop.name %> has been confirmed. Please findthe booking details below. </strong></p>
+
       <%= @svg.html_safe %>
       <h3>Booking Details</h3>
         <p><strong>No of Tickets:</strong><%= @booking.no_of_tickets %></p>
         <p><strong>Amount Paid:</strong><%= @booking.amount_paid %></p>
       <hr>
-        <h3>Workshop Schedule</h3>
+        <h3>Webinar Schedule:</h3>
         <h4><span class="badge bg-primary"><%= @workshop.total_duration %></span></h4>
         <h4><span class="badge bg-primary"><%= @workshop.daily_duration %></span></h4>
+   
     </div>
   </div>
 </div>

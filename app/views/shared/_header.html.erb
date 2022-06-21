@@ -8,14 +8,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="localhost:3000">📚 Home</a>
+          <a class="nav-link active" aria-current="page" href="/">🌏 Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/workshops">All course</a>
+          <a class="nav-link active" aria-current="page" href="/workshops">📚 All course</a>
         </li>
    
-          <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">💬 Contact us</a>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/users/profile">👤 My profile</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/users/index">🔍 Status</a>
         </li>
         
         <% if view_signed_in? %>
@@ -35,7 +39,7 @@
             <li><%= link_to 'Sign Out', destroy_view_session_path, class: "dropdown-item", data: { turbo_method: :delete } %></li>
             <li><%= link_to 'Edit Profile', edit_view_registration_path, class: "dropdown-item" %></li>
           <hr>
-            <lead style="color:red;" class="text-center" ><b> <%= current_view.email %> <%= current_view.role %>  </b></lead></li>
+            <h9 style="color:blue;" class="text-center" ><b> <%= current_view.email %> <%= current_view.role %>  </b></h9></li>
           <% else %>
             <li><%= link_to 'Sign In', new_view_session_path, class: "dropdown-item" %></li>
             <li><%= link_to 'Sign Up', new_view_registration_path, class: "dropdown-item" %></li>

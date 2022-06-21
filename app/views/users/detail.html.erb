@@ -1,0 +1,39 @@
+  <div class="card my-4"  style="width: 72rem;">
+    <div class="card-body">
+      <div class="card-header ">
+        <b class="text-center"><p style="color:red;"><%= @customer.full_name %><br>
+          <%= @customer.email %><br>
+          <%= @customer.contact_number %><br><br/><b>
+        <p style= "color:blue;">Total Number of course u booked :-   <%= @customer.bookings.count %><br> </p>
+        <table  class="table table-striped table-dark table-bordered ">
+        <tr>
+          <th class="text-center">Course name</th>
+          <th class="text-center">Price </th>
+          <th class="text-center"> Date-of-event</th>
+          <th class="text-center"> Time-of-event</th>
+          <th class="text-center"> Tickets </th>
+          <th class="text-center">Total amount </th>
+          <th class="text-center">Booking Id </th>
+        </tr>
+        </table>
+        <% @customer.bookings.each do |b| %>
+        <table class="table table-striped">
+        <tr>
+          <td  class="text-center"><%= b.workshop.name %><br></td>
+          <td  class="text-center"><%= b.workshop.registration_fee %><br></td>
+          <td  class="text-center"><%= b.workshop.start_date %> to <%= b.workshop.end_date %><br></td>
+          <td  class="text-center"> Daily <%= b.workshop.start_time %> to <%= b.workshop.end_time %><br></td>
+          <td  class="text-center"><%= b.no_of_tickets %><br></td>
+          <td class="text-center"><%= b.amount_paid %><br></td>
+          <td  class="text-center"><%= b.order_number %><br></td>
+          </tr>
+        </table>
+        <% end %>
+       
+       <hr>
+      <p class= "text-center"><b>Want to cancel your booking ⁉️ </b>
+      <%= link_to "Cancel your booking", new_refund_path %></p>
+			</div>
+		</div>
+	</div>
+
