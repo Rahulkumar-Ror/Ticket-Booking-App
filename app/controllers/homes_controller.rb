@@ -3,7 +3,5 @@ class HomesController < ApplicationController
   def index
     @upcoming_workshops = Workshop.upcoming_workshops
     @past_workshops = Workshop.past_workshops
-
-    # binding.pry
   end
 end

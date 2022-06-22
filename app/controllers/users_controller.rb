@@ -7,8 +7,9 @@ class UsersController < ApplicationController
 
   def profile
     @customers = Customer.all
-  end
-
+  
+  end 
+  
   def detail
     @customer = Customer.find_by_id(params[:id])
     # binding.pry

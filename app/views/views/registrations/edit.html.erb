@@ -3,14 +3,23 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <div>
+    <%= f.label :full_name %><br/>
+    <%= f.text_field :full_name, placeholder:"Enter your name", class: 'form-control'  %><br>
+  </div>
+
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %><br>
+  </div>
+
+  <div class = "select optional form-control">
+    <%= f.select :role, ['Admin', 'Customer'],class: "form-control"%><br/>
   </div>
 
   <div>
-    <%= f.label :role %><br/>
-    <%= f.select :role, ['Admin', 'Customer'] %><br/>
+    <%= f.label :contact_number %><br/>
+    <%= f.text_field :contact_number, placeholder:"Enter your contact number", class: 'form-control' %><br/>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -19,7 +28,7 @@
 
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br/>
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />

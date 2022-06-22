@@ -5,18 +5,19 @@
     </div>
     <div class ="card-body">
       <h1>Greetings from <b>Course mania</b></h1>
-      <h3 style= "color:blue;">Hello <%= @customer.full_name %></h3>
+      <h3 style= "color:blue;">Hello <%= @customer.full_name %> ,</h3>
   
       <h3>Here is your booking id: <%= @booking.order_number %>. This booking id is unique per order and will be required for requesting refunds in case if you wish to cancel booking</h3>
 
       <p style="color:red;"><b>Make sure you don't share this booking id publicity, because it's unique for you!</b></p>
 
-      <p class="lead">Your booking for <strong><%= @workshop.name %> has been confirmed. Please findthe booking details below. </strong></p>
+      <p class="lead">Your booking for <strong><%= @workshop.name %> has been confirmed. Please find the booking details below. </strong></p>
 
       <%= @svg.html_safe %>
-      <h3>Booking Details</h3>
-        <p><strong>No of Tickets:</strong><%= @booking.no_of_tickets %></p>
-        <p><strong>Amount Paid:</strong><%= @booking.amount_paid %></p>
+      <h3 style="color:blue;">Booking Details</h3>
+        <p><strong>Contact number:-</strong>  <%= @customer.contact_number %></p>
+        <p><strong>No of Tickets:-</strong>  <%= @booking.no_of_tickets %></p>
+        <p><strong>Amount Paid:-</strong>  <%= @booking.amount_paid %></p>
       <hr>
         <h3>Webinar Schedule:</h3>
         <h4><span class="badge bg-primary"><%= @workshop.total_duration %></span></h4>

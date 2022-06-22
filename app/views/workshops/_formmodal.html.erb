@@ -3,8 +3,8 @@
 <% if  @workshop.start_date > Date.today %>
   <%= link_to 'Book your slot', new_booking_path, class: "btn btn-info btn-lg mb-4", method: :get, data: { bs_toggle: 'modal', bs_target: '#newUserModal', remote: true } %>
 <% else %>
-  <p style= "color: red;" class="text-center"> Sorry for the inconvenience !!! But the event registration Date is already over.. 🔒</p>
-  <p style= "color: green;" class="text-center">Your can go for the other Upcoming events...</p>
+  <p style= "color: red;" class="text-center alert alert-danger"> Sorry for the inconvenience !!! But the event registration Date is already over.. 🔒</p>
+  <p style= "color: green;" class="text-center  alert alert-success">Your can go for the other Upcoming events...</p>
 <% end %>
 
 <!-- Modal -->
@@ -25,17 +25,12 @@
 		    <%= form_with url: :bookings,  data: { turbo: false }, local: false do |form| %>
 
         <%= form.hidden_field :workshop_id, value: @workshop.id %>
-      <div class= "form-group">
-        <%= form.label :full_name, class: "mb-2 mt-2" %>
-        <%= form.text_field :full_name, class: "form-control", required: true %>
-      </div>
-    
+
+        <%= form.hidden_field :full_name, value: current_view.full_name, required: true %>
         <%= form.hidden_field :email, value: current_view.email , required: true %>
-      
-      <div class= "form-group">
-        <%= form.label :contact_number, class: "mb-2 mt-2" %>
-        <%= form.text_field :contact_number, class: "form-control", required: true %>
-      </div>
+
+        <%= form.hidden_field :contact_number, value: current_view.contact_number, required: true %>
+
       <div class= "form-group">
         <%= form.label :no_of_seat_you_want_to_book, class: "mb-2 mt-2" %>
         <%= form.number_field :no_of_tickets, class: "form-control", required: true, min: 1, max: @workshop.remaining_sits %>
@@ -78,7 +73,7 @@
     
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+
       </div>
 		</div>
 	</div>
