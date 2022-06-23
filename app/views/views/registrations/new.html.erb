@@ -1,6 +1,7 @@
-<div class="col-lg-6 mx-lg-auto my-5">
-<div class="card shadow">
-<div class="card-header">
+<section class="vh-100 gradient-custom">
+<div class="col-lg-5 mx-lg-auto my-5">
+<div class="card shadow-2-strong card-registration style="border-radius: 15px;"">
+<div class="card-header p-3 p-md-3">
   <h2 class="card-title text-center">Sign Up</h2>
 </div>
 
@@ -9,47 +10,74 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div>
-    <%= f.label :full_name %><br/>
-    <%= f.text_field :full_name, placeholder:"Enter your name" , class: 'form-control' %>
+    <label class="form-label">Full Name</label>
+    <%= f.text_field :full_name, placeholder:"Enter your name" , class: 'form-control form-control-md' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder: "abcde@gmail.com" , class: 'form-control'%>
-  </div>
+    <label class="form-label">Email</label>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder: "abcde@gmail.com" , class: 'form-control form-control-md'%>
+  </div><br>
+
+  <div >
+   
+    <%= f.select :role, ['Admin', 'Customer'], class: "select optional form-control"  %>
+  </div><br/>
 
   <div>
-    <%= f.label :role %><br/>
-    <%= f.select :role, ['Admin', 'Customer'] %><br/>
-  </div>
-
-  <div>
-    <%= f.label :contact_number %><br/>
-    <%= f.text_field :contact_number, placeholder:"Enter your contact number" , class: 'form-control' %><br/>
+    <label class="form-label">Contact number</label>
+    <%= f.text_field :contact_number, placeholder:"Enter your contact number" , class: 'form-control form-control-md' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password %>
+    <label class="form-label">Password </label>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password",placeholder: "************", class: 'form-control' %>
+    <%= f.password_field :password, autocomplete: "new-password",placeholder: "************", class: 'form-control form-control-md' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: "************" , class: 'form-control'%>
+    <label class="form-label">Password confirmation</label>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: "************" , class: 'form-control form-control-md'%>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up", class: "btn btn-primary my-4" %>
+  <div class="d-grid gap-2 my-3 ">
+    <%= f.submit "Sign up", class:"btn btn-primary btn-lg mt-3" %>
   </div>
 <% end %>
  <p><b>Already an account ?! </b><%= render "devise/shared/links" %></p>
 </div>
 </div>
 </div>
+</section>
+
+
+<style>
+
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
 
 
 
+</style>

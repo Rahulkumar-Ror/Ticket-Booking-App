@@ -1,20 +1,23 @@
-<div class="col-lg-6 mx-lg-auto my-5">
-<div class="card shadow">
-<div class="card-header">
-  <h2 class="card-title text-center">Login</h2>
+
+<section class="vh-100 gradient-custom">
+<div class="col-lg-4 mx-lg-auto my-5">
+<div class="card shadow-2-strong card-registration style="border-radius: 15px;"">
+<div class="card-header p-3 p-md-3">
+  <h2 class="card-title text-center">Log In</h2>
   <p style="text-align:center;">Please sign in to continue.</p>
 </div>
 <div class="card-body">
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { turbo: false } }) do |f| %>
-  <div class="form-group">
-    <%= f.label :email ,class: "mb-2" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
-  </div>
 
   <div class="form-group">
-    <%= f.label :password ,class: "mb-2" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" , class: 'form-control'%>
+    <label class="form-label">Email</label>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control form-control-md' %>
+  </div><br>
+
+  <div class="form-group">
+    <label class="form-label">Password</label>
+    <%= f.password_field :password, autocomplete: "current-password" , class: 'form-control form-control-md' %>
   </div>
 
   <% if devise_mapping.rememberable? %>
@@ -24,8 +27,8 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in", class: "btn btn-outline-primary my-2 btn-lg", data: {turbo: false }  %>
+  <div class="d-grid gap-2 my-3">
+    <%= f.submit "Log in", class: "btn btn-primary my-2 btn-lg", data: {turbo: false }  %>
   </div>
 <% end %>
 
@@ -33,3 +36,66 @@
 </div>
 </div>
 </div>
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+ 
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>

@@ -20,6 +20,7 @@ gem "importmap-rails"
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 gem "sass-rails"
+gem 'bootstrap-sass'
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
@@ -103,3 +104,4 @@ gem 'rails-controller-testing'
 gem "sidekiq"
 gem "simple_form"
 gem "font-awesome-rails"
+gem 'video-js-rails'

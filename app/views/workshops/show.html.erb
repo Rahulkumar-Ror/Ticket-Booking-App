@@ -20,9 +20,20 @@
 		<p class="lead mt-3 mb-3"><%= @workshop.description %>
 		</p>
 
+    <div style="width:400px; height:400px"> 
+      <% if @workshop.clip.attached? %>
+        <%= image_tag (@workshop.thumbnail),  width: "200px" %>
+      <% end %>
+    </div>
+   
+    <div > 
+      <% if @workshop.clip.attached? %>
+      <%= video_tag(url_for(@workshop.clip)) %>
+      <% end %>
+    </div>
+
   <% if @workshop.bookings  %>
 
-  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/lQOLrycmXC4?enablejsapi=1&amp;autoplay=1" frameborder="" allowfullscreen=""></iframe>
   
   <% end %>
   

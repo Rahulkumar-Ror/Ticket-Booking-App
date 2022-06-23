@@ -12,6 +12,14 @@
     <%= f.text_area :description  , class: "form-control"%>
   </div>
   <div class="center">
+    <%= f.label :clip %>
+    <%= f.file_field :clip  , class: "form-control", rows: "5", cols: "100"%>
+  </div>
+  <div class="center">
+    <%= f.label :thumbnail %>
+    <%= f.file_field :thumbnail  , class: "form-control", rows: "5", cols: "100"%>
+  </div>
+  <div class="center">
     <%= f.label :start_date, class: "form-group" %>
     <%= f.date_field :start_date  , class: "form-control"%>
   </div>

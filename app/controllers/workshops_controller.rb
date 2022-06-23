@@ -103,7 +103,7 @@ class WorkshopsController < ApplicationController
 
   private 
   def workshop_params
-    params.require(:workshop).permit(:name, :description, :start_date, :end_date, :start_time, :end_time, :total_sits, :remaining_sits, :registration_fee)
+    params.require(:workshop).permit(:name, :description, :start_date, :end_date, :start_time, :end_time, :total_sits, :remaining_sits, :registration_fee, :clip, :thumbnail)
   end
 
   def initialize_session
