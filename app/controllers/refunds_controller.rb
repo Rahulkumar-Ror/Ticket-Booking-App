@@ -28,7 +28,9 @@ class RefundsController < ApplicationController
 	def update 
 		refundable_amount = params[:refund][:no_of_tickets].to_i * @workshop.registration_fee
 		if @refund.update(no_of_tickets: params[:refund][:no_of_tickets])
-		redirect_to refund_acceptance_refund_path, notice: "You are eligible for refund of $#{refundable_amount.to_f}"
+		  RefundNotificationMailer.customer_refund_notification(@refund).deliver_now
+		  RefundNotificationMailer.admin_refund_notification(@refund).deliver_now
+			redirect_to refund_acceptance_refund_path, notice: "You are eligible for refund of $#{refundable_amount.to_f}"
 		else
       redirect_to refund_acceptance_refund_path, alert: 'Something went wrong'
 		end

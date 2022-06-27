@@ -4,7 +4,6 @@
 <%= simple_form_for(@workshop) do |f| %>
   <div class="center">
     <%= f.label :name  %>
-   
     <%= f.text_field :name , class: "form-control" %>
   </div>
   <div class="center">
@@ -13,11 +12,11 @@
   </div>
   <div class="center">
     <%= f.label :clip %>
-    <%= f.file_field :clip  , class: "form-control", rows: "5", cols: "100"%>
+    <%= f.file_field :clip  , class: "form-control" %>
   </div>
   <div class="center">
     <%= f.label :thumbnail %>
-    <%= f.file_field :thumbnail  , class: "form-control", rows: "5", cols: "100"%>
+    <%= f.file_field :thumbnail  , class: "form-control" %>
   </div>
   <div class="center">
     <%= f.label :start_date %>
@@ -49,7 +48,6 @@
   </div>
 
   <div class="d-grid gap-2 my-4">
-
     <%= f.submit  class: "btn btn-outline-primary my-3 btn-lg" %>
   </div>
 <% end %>
@@ -64,7 +62,6 @@ input[type=text], select {
   border-radius: 4px;
   box-sizing: border-box;
 }
-
 input[type=submit] {
   width: 100%;
   background-color: #4CAF50;
@@ -75,8 +72,5 @@ input[type=submit] {
   border-radius: 4px;
   cursor: pointer;
 }
-
-
-
 
 </style>

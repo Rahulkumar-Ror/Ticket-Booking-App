@@ -19,10 +19,19 @@
     </div>
 		<p class="lead mt-3 mb-3"><%= @workshop.description %>
 		</p>
-
+    <tr class= "text-center">
+      <%= button_to "Delete Course", workshop_path(@workshop.id), method: :delete, class: "btn btn-danger btn-md btn-sm" %> 
+      <%= button_to "Edit Course", edit_workshop_path(@workshop), method: :get, class: "btn btn-info btn-md btn-sm" %></h3>
+    </tr>
+   
     <div style="width:400px; height:400px"> 
       <% if @workshop.clip.attached? %>
-        <%= image_tag (@workshop.thumbnail),  width: "200px" %>
+        <% if @workshop.start_date < Date.today %>
+          <%= image_tag (@workshop.clip),  width: "200px", height: "200px", class: "img-fluid" %>
+          <div>
+            <p>Soory this course is not avialable now..</p>
+          </div>
+        <% end %>
       <% end %>
     </div>
    
@@ -44,3 +53,16 @@
 </div>
 </div>
 </div>
+
+<style>
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+
+img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+</style>

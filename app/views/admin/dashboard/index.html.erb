@@ -4,6 +4,7 @@
 		  <p class="lead"><%= @workshop_count %> Total workshop</p>
 		  <p class="lead"><%= @upcoming_workshop_count %> Total upcoming workshop</p>
 		  <p class="lead"><%= @past_workshop_count %> Total workshops organized recently</p>
+      <%= link_to 'View All Workshops', admin_workshops_path, class: "btn btn-primary" %>
     </div>
   </div>
 </div>
@@ -12,13 +13,42 @@
     <div class="card-body">
 		  <p class="lead"><%= @booking_count %> Total bookings</p>
 		  <p class="lead"> $ <%= @revenue_earned %> Total revenue</p>
-    </div>
+     <%= link_to 'View all Bookings', admin_bookings_path, class: "btn btn-primary" %>
+      </div>
   </div>
 </div>
 <div class="col-lg-3">
   <div class="card shadow mt-5">
     <div class="card-body">
 		  <p class="lead"><%= @customer_count %> Total customers</p>
+      <%= link_to 'View all customers', admin_customers_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+<div class="col-lg-6 ">
+  <div class="card shadow mt-5">
+    <div class="card-body">
+      <p class="lead fw-bold"><%= @refundable_bookings.count %>  Refundable Bookings</p>
+      <% @refundable_bookings.each do |booking| %>
+        <p class="lead"><%= link_to booking.workshop.name, admin_booking_path(booking) %></p>
+        <%= %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="col-lg-6 ">
+  <div class="card shadow mt-5">
+    <div class="card-body">
+      <p class="lead fw-bold"><%= @active_refunds.count %>  Refunds to be processed</p>
+        <ul class="list-group">
+          <% @active_refunds.each do |refund| %>
+          <li class="list-group-item">
+            <p class="lead"><%= link_to refund.booking.workshop.name, admin_workshop_path(refund.booking.workshop) %></p>
+            <p class="lead"><%= refund.no_of_tickets %>tickets ($<%= refund.amount_to_be_refunded %> to be refunded)</p>
+            <%= link_to "Process Refund", "javascript:void(0)", class: "btn btn-primary" %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>

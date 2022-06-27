@@ -1,0 +1,27 @@
+
+<div class="card" >
+<% if @workshop.clip.attached? %>
+   <%= image_tag (@workshop.clip), height: 200 %>
+   <% end %>
+  <h1 class="class-title">Refund Requested Accepted</h1>
+  <h3> Hello <%= @customer.full_name %><h3>
+  <h1> Greetings from <b>Event mobi</b><h1> 
+  <p>This is to inform you that your refund request for <strong><%= link_to @workshop.name, workshop_url(@workshop), target: '_blank' %>(Order Number: <%= @booking.order_number %></strong> has been accepted. We forwaded your request to our team and they will process your refund request within 24 hours and you will receive your money within 5-7 business days in your account.</p>
+  <h8> <%= @workshop.daily_duration %></h8>
+  <p class="lead">Please find the refund details below:</p>
+  <hr>
+  <h5>No. of tickets to be cancelled: <%= @refund.no_of_tickets %></h5>
+  <h5>Refundable Amount: $ <%= @refundable_amount %></h5>
+  <h5>Booking for: <%= link_to @workshop.name, workshop_url(@workshop), target: '_blank' %></h5>
+</div>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,7 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
+  # get 'errors/not_found'
+  # get 'errors/internal-server_error'
   get 'users/index'
   get 'users/profile'
   
@@ -12,6 +14,8 @@ Rails.application.routes.draw do
   root "homes#index"
   # delete 'views/sign_out', to: 'devise/sessions#destroy'
   # get "workshops/new"
+  match "/404", to: "errors#not_found", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
   get 'users/:id/detail', to: "users#detail", as: "user_detail"
   post "workshops/add_to_cart/:id", to: "workshops#add_to_cart", as: "add_to_cart"
   delete "workshops/remove_from_cart/:id", to: "workshops#remove_from_cart", as: "remove_from_cart"
@@ -34,8 +38,13 @@ Rails.application.routes.draw do
   end
   
   mount Sidekiq::Web => '/sidekiq'
+
   namespace :admin do
     get 'dashboard' => 'dashboard#index'
+    resources :workshops 
+    resources :bookings
+    resources :refunds
+    resources :customers
   end
   # Defines the root path route ("/")
   # root "articles#index"

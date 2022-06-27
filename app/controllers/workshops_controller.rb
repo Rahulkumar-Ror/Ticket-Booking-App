@@ -1,4 +1,5 @@
 class WorkshopsController < ApplicationController
+  before_action :get_workshop, only: %i[ edit update destroy show]
   before_action :authenticate_view!
   before_action :auth_admin, only: [:new, :create, :edit, :update]
   before_action :delete_admin, only: [:destroy]
@@ -39,11 +40,10 @@ class WorkshopsController < ApplicationController
   end
 
   def edit 
-    @workshop = Workshop.friendly.find(params[:id])
   end
 
   def update
-    @workshop = Workshop.friendly.find(params[:id])
+    @workshop.view_id = current_view.id
     @workshop.update(workshop_params)
     if @workshop.valid?
       redirect_to workshops_path
@@ -57,25 +57,20 @@ class WorkshopsController < ApplicationController
     @workshop = Workshop.new(workshop_params)
     @workshop.view_id = current_view.id
    
-    # binding.pry
     if @workshop.save
-      # binding.pry
       TestRunJob.perform_later("Hi")
-      # UserMailer.with(workshop: @user).welcome_email.deliver_later
       flash[:notice] = "Course successfully created"
       redirect_to workshops_path
     else
-      flash[:alert] = "something wrong happend"
+      flash[:alert] = @workshop.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
-    @workshop = Workshop.friendly.find(params[:id])
   end
 
   def destroy
-    @workshop = Workshop.friendly.find(params[:id])
     @workshop.destroy
     redirect_to workshop_path
   end 
@@ -95,13 +90,19 @@ class WorkshopsController < ApplicationController
   # end
 
   def show
-    @workshop = Workshop.friendly.find(params[:id])
     session[:visit_count] ||= 0
     session[:visit_count] += 1
     @visit_count = session[:visit_count]
   end
 
   private 
+
+  def get_workshop
+    @workshop = Workshop.friendly.find(params[:id])
+  # rescue ActiveRecord::RecordNotFound => error
+  #   redirect_to workshops_path, notice: error.message
+  end
+
   def workshop_params
     params.require(:workshop).permit(:name, :description, :start_date, :end_date, :start_time, :end_time, :total_sits, :remaining_sits, :registration_fee, :clip, :thumbnail)
   end

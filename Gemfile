@@ -58,6 +58,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "faker"
   gem "sqlite3", "~> 1.4"
+  gem "figaro"
 end
 
 group :production do
