@@ -18,6 +18,15 @@
           <a class="nav-link active" aria-current="page" href="/users/profile">👤 My profile</a>
         </li>
 
+        <% if view_signed_in? %>
+          <% if current_view.role == "Admin" %>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/admin/dashboard">Admin panel</a>
+            </li>
+          <% else %>
+          <% end %>
+        <% end %>
+
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/users/index">🔍 Status</a>
         </li>
@@ -26,7 +35,7 @@
         
         <% if view_signed_in? %>
           <% if current_view.role == "Admin" %>
-            <li class="nav-item">
+            <li class="nav-item"> 
               <a class="nav-link active btn btn-warning btn-sm " aria-current="page" href="/workshops/new"> New course</a>
             </li>
           <% else %>
@@ -73,7 +82,7 @@
 .right{
   display: flex;
   align-items: flex-end; 
-  margin-left: 35em;
+  margin-left: 28em;
 }
 
 .body{

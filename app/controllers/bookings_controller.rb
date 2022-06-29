@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  # before_action :authenticate_view!
   def create
     @stripe_service = StripeService.new
     @workshop = Workshop.find(params[:workshop_id])
