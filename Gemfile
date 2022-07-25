@@ -106,3 +106,7 @@ gem "sidekiq"
 gem "simple_form"
 gem "font-awesome-rails"
 gem 'video-js-rails'
+gem 'omniauth-google-oauth2'
+# gem 'hirb'
+gem "google_custom_search_api"
+gem "google_places"

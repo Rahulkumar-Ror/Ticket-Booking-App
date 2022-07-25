@@ -43,6 +43,4 @@ RSpec.describe Workshop, type: :model do
 		workshop = Workshop.create(end_time: nil)
 		expect(Workshop.new).to_not be_valid 
 	end
-
-	
 end

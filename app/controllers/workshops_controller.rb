@@ -1,6 +1,6 @@
 class WorkshopsController < ApplicationController
   before_action :get_workshop, only: %i[ edit update destroy show]
-  before_action :authenticate_view!, only: %i[ show new create edit update ]
+  # before_action :authenticate_view!
   before_action :auth_admin, only: [:new, :create, :edit, :update]
   before_action :delete_admin, only: [:destroy]
   before_action :initialize_session
@@ -20,6 +20,7 @@ class WorkshopsController < ApplicationController
   def index
     @q = Workshop.ransack(params[:q])
     @course1s = @q.result(distinct: true)
+ 
     @workshops = Workshop.all
     # @workshops = Workshop.upcoming_workshops
     # @q = Workshop.ransack(params[:name])

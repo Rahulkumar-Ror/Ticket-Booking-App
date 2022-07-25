@@ -7,7 +7,8 @@ class Workshop < ApplicationRecord
   # mount_uploader :video, VideoUploader
   has_one_attached :clip 
   has_one_attached :thumbnail 
-
+  has_many :orderables
+  has_many :carts, through: :orderables
   has_many :bookings, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :customers, through: :bookings

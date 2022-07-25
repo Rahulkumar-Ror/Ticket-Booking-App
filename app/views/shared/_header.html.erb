@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-primary text-white bg-dark">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
   <div class="container-fluid ">
   
     <a class="navbar-brand text-white fw-dark" > Event mobi</a>
@@ -21,9 +22,9 @@
         <% if view_signed_in? %>
           <% if current_view.role == "Admin" %>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/admin/dashboard">Admin panel</a>
-            </li>
+              <a class="nav-link active" aria-current="page" href="/admin/dashboard">Admin panel</a></li>
           <% else %>
+      
           <% end %>
         <% end %>
 
@@ -35,18 +36,18 @@
         
         <% if view_signed_in? %>
           <% if current_view.role == "Admin" %>
-            <li class="nav-item"> 
-              <a class="nav-link active btn btn-warning btn-sm " aria-current="page" href="/workshops/new"> New course</a>
+            <li class="nav-item">
+              <a class="nav-link active btn btn-info btn-sm border rounded-pill border-white" aria-current="page" href="/workshops/new"> New course</a>
             </li>
           <% else %>
             <li class="nav-item">
-              <a class="nav-link active btn btn-warning btn-sm " aria-current="page" href="#"> Log out</a>
+              <a class="nav-link active btn btn-warning btn-sm border rounded-pill border-blue " aria-current="page" href="#"> Log out</a>
             </li>
           <% end %>
         <% end %>
 
         <li class="nav-item dropdown " >
-          <a class=" btn btn-success btn-md dropdown-toggle id="topnav"  href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="btn btn-success btn-md border border-blue rounded-pill dropdown-toggle" id="topnav"  href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Settings
           </a>
           

@@ -3,8 +3,8 @@
   <div class="card-header">
 <%= simple_form_for(@workshop) do |f| %>
   <div class="center">
-    <%= f.label :name  %>
-    <%= f.text_field :name , class: "form-control" %>
+    <%= f.label :Course_title  %>
+    <%= f.text_field :name ,id: "nam", onkeypress: "keyPre()", class: "form-control" %>
   </div>
   <div class="center">
     <%= f.label :description %>
@@ -74,3 +74,8 @@ input[type=submit] {
 }
 
 </style>
+<script>
+  function keyPre(){
+    document.getElementById('nam').style.color = 'red'
+  }
+</script>
