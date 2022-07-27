@@ -4,11 +4,7 @@ class Admin::CustomersController < AdminController
 	def index
 		@q = Customer.ransack(params[:q])
 		@customers = @q.result
-		# binding.pry
-		if params[:q]
-			# binding.pry
-      @results = GoogleCustomSearchApi.search(params[:q])
-	  end
+		
 	end
   
 

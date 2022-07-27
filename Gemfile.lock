@@ -90,6 +90,8 @@ GEM
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
+    breadcrumbs_on_rails (4.1.0)
+      railties (>= 5.0)
     builder (3.2.4)
     bulma-rails (0.9.3)
       sassc (~> 2.0)
@@ -425,6 +427,7 @@ DEPENDENCIES
   better_errors
   bootsnap
   bootstrap-sass
+  breadcrumbs_on_rails
   bulma-rails (~> 0.9.3)
   capybara
   carrierwave

@@ -110,3 +110,4 @@ gem 'omniauth-google-oauth2'
 # gem 'hirb'
 gem "google_custom_search_api"
 gem "google_places"
+gem "breadcrumbs_on_rails"

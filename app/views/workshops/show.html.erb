@@ -39,11 +39,25 @@
         <% end %>
       <% end %>
     </div>
-   
-  
+    <div style="display: block; width: 80%; min-width: 400px; background-color: #caa;">
+      <h3>Event Participents</h3>
+      <ul class="list-group">
+        <% @workshop.customers.each do |w| %>
+          <li class="list-group-item">
+            <div class="media">
+            <%= image_tag 'dummy-user.png', class: 'mr-3 guest-icon' %>
+              <div class="media-body">
+                <h5 class="mt-0"><%= w.email %><br></h5>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
       <% if @workshop.clip.attached? %>
-      <% video_tag(url_for(@workshop.clip)) %>
-      <% end %>
+    <% video_tag(url_for(@workshop.clip)) %>
+  <% end %>
   <% if @workshop.bookings  %>
     <% end %>
       <%= render "workshops/comment" %>
@@ -52,6 +66,8 @@
   </div>
 </div>
 </div>
+
+
 
 <style>
 img {

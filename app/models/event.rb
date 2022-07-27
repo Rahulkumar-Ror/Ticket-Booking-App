@@ -1,3 +1,3 @@
 class Event < ActiveRecord::Base
-  has_event_calendar
+  has_one_attached :calendar
 end

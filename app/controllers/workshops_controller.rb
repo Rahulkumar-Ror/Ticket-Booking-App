@@ -4,6 +4,7 @@ class WorkshopsController < ApplicationController
   before_action :auth_admin, only: [:new, :create, :edit, :update]
   before_action :delete_admin, only: [:destroy]
   before_action :initialize_session
+  before_action :add_index_breadcrumb, only: [:show, :new, :edit]
 
   def add_to_cart
     id = params[:id].to_i
@@ -18,6 +19,7 @@ class WorkshopsController < ApplicationController
   end
 
   def index
+
     @q = Workshop.ransack(params[:q])
     @course1s = @q.result(distinct: true)
  
@@ -31,6 +33,8 @@ class WorkshopsController < ApplicationController
         send_data ExportService::WorkshopExport.new(@q.result).to_csv, filename: "Workshop-#{DateTime.current}.csv"
       }
     end
+    add_breadcrumb('Workshop', nil, true)
+
   end
 
   def new
@@ -68,6 +72,9 @@ class WorkshopsController < ApplicationController
   end
 
   def edit
+    add_breadcrumb(@workshop.name, false)
+    add_breadcrumb('Edit', false)
+
   end
 
   def destroy
@@ -93,6 +100,10 @@ class WorkshopsController < ApplicationController
     session[:visit_count] ||= 0
     session[:visit_count] += 1
     @visit_count = session[:visit_count]
+    @customer = Customer.all
+    @booking = Booking.all
+ 
+    add_breadcrumb(@workshop.name, nil, true)
   end
 
   private 
@@ -109,6 +120,10 @@ class WorkshopsController < ApplicationController
 
   def initialize_session
     session[:cart] ||= []
+  end
+
+  def add_index_breadcrumb
+    add_breadcrumb('Workshop', workshop_path, false)
   end
   
 end

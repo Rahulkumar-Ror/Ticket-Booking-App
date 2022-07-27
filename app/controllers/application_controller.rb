@@ -4,6 +4,16 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_render_cart
   before_action :initialize_cart
+  before_action :set_breadcrumbs
+  
+  def add_breadcrumb(label, path, current = false)
+    @breadcrumbs << {
+      label: label,
+      path: path,
+      current: current
+    }    
+  end
+  
   protected 
 
   def configure_permitted_parameters
@@ -25,6 +35,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def set_breadcrumbs 
+    @breadcrumbs = []
+  end
 
   def auth_admin
     if view_signed_in? && current_view.role == "Customer"
