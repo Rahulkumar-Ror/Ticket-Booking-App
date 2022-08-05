@@ -2,7 +2,7 @@
 <div class="col-lg-5 mx-lg-auto my-5">
 <div class="card shadow-2-strong card-registration style="border-radius: 15px;"">
 <div class="card-header p-3 p-md-3">
-  <h2 class="card-title text-center">Sign Up</h2>
+  <h2 class="card-title text-center">Account</h2>
 </div>
 
 <div class="card-body">
@@ -19,8 +19,7 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder: "abcde@gmail.com" , class: 'form-control form-control-md'%>
   </div><br>
 
-  <div >
-   
+  <div>
     <%= f.select :role, ['Admin', 'Customer'], class: "select optional form-control"  %>
   </div><br/>
 
@@ -32,7 +31,7 @@
   <div class="form-group">
     <label class="form-label">Password </label>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <em>(contains at least a lowercase letter, a uppercase, a digit, a special char and 8+ chars)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password",placeholder: "************", class: 'form-control form-control-md' %>
   </div>

@@ -1,7 +1,5 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-  <div class="container-fluid ">
-  
+  <div class="container-fluid ">  
     <a class="navbar-brand text-white fw-dark" > Event mobi</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -9,14 +7,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">🌏 Home</a>
+          <a class="nav-link active" aria-current="page" href="/"> Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/workshops">📚 All course</a>
+          <a class="nav-link active" aria-current="page" href="/workshops"> All course</a>
         </li>
    
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/users/profile">👤 My profile</a>
+          <a class="nav-link active" aria-current="page" href="/users/profile"> My profile</a>
         </li>
 
         <% if view_signed_in? %>
@@ -24,7 +22,8 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/admin/dashboard">Admin panel</a></li>
           <% else %>
-      
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/users/event_schedule">Calendar 📆</a></li>
           <% end %>
         <% end %>
 
@@ -33,6 +32,10 @@
         </li>
         <div class="right">
         <div class="flexdiv">
+
+        <li >
+          <%= render "layouts/notifications"%>
+        </li>
         
         <% if view_signed_in? %>
           <% if current_view.role == "Admin" %>
@@ -56,15 +59,13 @@
             <li><%= link_to 'Sign Out', destroy_view_session_path, class: "dropdown-item", data: { turbo_method: :delete } %></li>
             <li><%= link_to 'Edit Profile', edit_view_registration_path, class: "dropdown-item" %></li>
           <hr>
-            <h9 style="color:Tomato; " class="text-center" ><b> <%= current_view.role %>  </b></h9></li>
+            <h9 style="color:Tomato;" class="text-center"><b> <%= current_view.role %> </b></h9></li>
           <% else %>
             <li><%= link_to 'Sign In', new_view_session_path, class: "dropdown-item" %></li>
             <li><%= link_to 'Sign Up', new_view_registration_path, class: "dropdown-item" %></li>
           <% end %>    
         </li>
       </ul>
-      
-  
       </div>
       </div>
     </div>
@@ -83,7 +84,7 @@
 .right{
   display: flex;
   align-items: flex-end; 
-  margin-left: 28em;
+  margin-left: 23em;
 }
 
 .body{

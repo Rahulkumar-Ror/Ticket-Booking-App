@@ -1,10 +1,11 @@
 <div class=" col-lg-9 mx-lg-auto my-4">
   <div class="card shadow">
   <div class="card-header">
+
 <%= simple_form_for(@workshop) do |f| %>
   <div class="center">
     <%= f.label :Course_title  %>
-    <%= f.text_field :name ,id: "nam", onkeypress: "keyPre()", class: "form-control" %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
   <div class="center">
     <%= f.label :description %>
@@ -42,6 +43,7 @@
     <%= f.label :remaining_sits %>
     <%= f.number_field :remaining_sits , class: "form-control" %>
   </div>
+
   <div class="center">
     <%= f.label :registration_fee %>
     <%= f.number_field :registration_fee , class: "form-control" %>
@@ -50,6 +52,7 @@
   <div class="d-grid gap-2 my-4">
     <%= f.submit  class: "btn btn-outline-primary my-3 btn-lg" %>
   </div>
+
 <% end %>
 
 <style>

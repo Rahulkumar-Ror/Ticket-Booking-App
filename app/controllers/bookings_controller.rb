@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :authenticate_view!
+  # after_action:send_message
 
   def create
     @stripe_service = StripeService.new
@@ -25,7 +26,16 @@ class BookingsController < ApplicationController
     )
 
     if @booking.save
+      # binding.pry
       BookingsMailer.booking_confirmation(@booking).deliver_now
+      
+      TwilioSms.send_text(@customer.contact_number, "Congrulations 🥳🎉..You have successfully booked an course" ) 
+      # TwilioSms.send_text({
+      #   from: ENV['TWILIO_PHONE_NUMBER'],
+      #   to: '917991168428',
+      #   body: "Congrulations 🥳🎉..You have successfully booked an course"
+      # })
+    
       redirect_to workshop_path(@workshop), notice: "Congrulations 🥳🎉..You have successfully booked an course"
     else
       @stripe_service.create_stripe_refund(@charge.id)
@@ -41,13 +51,24 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
 
+  # def send_message
+  #   client = Twilio::REST::Client.new
+  #   client.messages.create({
+  #                            from: ENV['TWILIO_PHONE_NUMBER'],
+  #                            to: '917991168428',
+  #                            body: 'Hello there! This is a test'
+  #                          })
+  # end
+
   private
 
   def customer_params
+    # params.require(:customer).permit(:full_name, :contact_number, :email)
     params.permit(:full_name, :contact_number, :email)
   end
 
   def card_token_params
+    # params.require(:conversation).permit(:card_number, :exp_year, :exp_month, :cvv)
     params.permit(:card_number, :exp_year, :exp_month, :cvv)
   end
 end

@@ -4,7 +4,7 @@ class WorkshopsController < ApplicationController
   before_action :auth_admin, only: [:new, :create, :edit, :update]
   before_action :delete_admin, only: [:destroy]
   before_action :initialize_session
-  before_action :add_index_breadcrumb, only: [:show, :new, :edit]
+  before_action :add_index_breadcrumb, only: [:show, :edit]
 
   def add_to_cart
     id = params[:id].to_i
@@ -19,7 +19,6 @@ class WorkshopsController < ApplicationController
   end
 
   def index
-
     @q = Workshop.ransack(params[:q])
     @course1s = @q.result(distinct: true)
  
@@ -40,7 +39,6 @@ class WorkshopsController < ApplicationController
   def new
     @workshop = Workshop.new
     # @workshop.view_id = current_view.id
-    # binding.pry
   end
 
   def edit 
@@ -74,7 +72,6 @@ class WorkshopsController < ApplicationController
   def edit
     add_breadcrumb(@workshop.name, false)
     add_breadcrumb('Edit', false)
-
   end
 
   def destroy
@@ -104,6 +101,7 @@ class WorkshopsController < ApplicationController
     @booking = Booking.all
  
     add_breadcrumb(@workshop.name, nil, true)
+    mark_notifications_as_read
   end
 
   private 
@@ -124,6 +122,13 @@ class WorkshopsController < ApplicationController
 
   def add_index_breadcrumb
     add_breadcrumb('Workshop', workshop_path, false)
+  end
+
+  def mark_notifications_as_read
+    if current_view
+      notifications_to_mark_as_read = @workshop.notifications_as_workshop.where(recipient: current_view)
+      notifications_to_mark_as_read.update_all(read_at: Time.zone.now)
+    end
   end
   
 end

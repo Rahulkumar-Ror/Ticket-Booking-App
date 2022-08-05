@@ -1,0 +1,29 @@
+<div class="col-lg-12 text-center">
+    <div class="card-body">
+    <%= turbo_frame_tag 'calendar' do %>
+      <%= month_calendar(workshops: @workshops) do |date| %>
+       <br> <h5><%= date.strftime() %></h5>
+    </div>
+  <% if view_signed_in? %>
+    <% @customers.each do |c| %>
+        <% if current_view.email == c.email %>
+        <div class="card-header">
+          <div class="card-title">
+            <% c.bookings.each do |b| %>
+              <%= link_to b.workshop.name %> 🟢 <br>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-text">
+            <em>From <%= b.workshop.start_time %> to <%= b.workshop.end_time %>  
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+      <% end %>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

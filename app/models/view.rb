@@ -8,6 +8,7 @@ class View < ApplicationRecord
 
   has_many :workshops, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :notifications, as: :recipient, dependent: :destroy
   def self.from_omniauth(access_token)
     data = access_token.info
     # binding.pry
@@ -34,4 +35,33 @@ class View < ApplicationRecord
     end
     view
   end
+
+
+  PROFILE_FIELDS = %i[full_name contact_number ].freeze
+
+  def profile_complete?
+    profile_complete == 100
+  end
+
+  def profile_complete
+    fields_complete.zero? ? 10 : percent_complete
+  end
+
+  def missing_profile_section
+    PROFILE_FIELDS.select { |f| __send__(f).blank? }.first
+  end
+
+  private
+
+    def fields_complete
+      Float(PROFILE_FIELDS.count { |f| __send__(f).present? })
+    end
+
+    def percent_complete
+      fields_complete / fields_total * 100.0
+    end
+
+    def fields_total
+      Float(PROFILE_FIELDS.count)
+    end
 end

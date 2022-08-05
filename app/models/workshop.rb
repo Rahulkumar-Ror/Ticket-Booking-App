@@ -1,8 +1,8 @@
 class Workshop < ApplicationRecord
   validates :name, :description, :start_date, :end_date, :start_time, :end_time, presence: true
   extend FriendlyId
+  extend SimpleCalendar
   friendly_id :name, use: :slugged
-  
   # has_rich_text :description
   # mount_uploader :video, VideoUploader
   has_one_attached :clip 
@@ -12,6 +12,8 @@ class Workshop < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :customers, through: :bookings
+  has_noticed_notifications model_name: 'Notification'
+  has_many :notifications, through: :view, dependent: :destroy
   belongs_to :view
   validates :name, :description, presence: true
   validates :start_date, :end_date, :start_time, :end_time, presence: true

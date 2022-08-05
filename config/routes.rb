@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # get 'cart/show'
   # get 'errors/not_found'
   # get 'errors/internal-server_error'
+  get 'users/event_schedule'
   get 'users/index'
   get 'users/profile'
   get 'cart', to: 'cart#show'

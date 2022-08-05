@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   before_action :set_render_cart
   before_action :initialize_cart
   before_action :set_breadcrumbs
+  before_action :set_time_zone, if: :view_signed_in?
+  before_action :set_notifications, if: :current_view
   
   def add_breadcrumb(label, path, current = false)
     @breadcrumbs << {
@@ -35,6 +37,16 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def set_notifications
+    notifications = Notification.where(recipient: current_view).newest_first.limit(9).unread
+    @unread = notifications.unread
+    @read = notifications.read
+  end
+
+  def set_time_zone
+    # Time.zone = current_view.time_zone.now
+  end
 
   def set_breadcrumbs 
     @breadcrumbs = []

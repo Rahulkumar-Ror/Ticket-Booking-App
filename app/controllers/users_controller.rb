@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def profile
     @customers = Customer.all
-  
   end 
   
   def detail
@@ -15,5 +14,11 @@ class UsersController < ApplicationController
     # binding.pry
     # @booking = Booking.all
     # @workshop = Workshop.all
+  end
+
+  def event_schedule
+    @workshops = Workshop.all
+    @customers = Customer.all
+    # binding.pry
   end
 end

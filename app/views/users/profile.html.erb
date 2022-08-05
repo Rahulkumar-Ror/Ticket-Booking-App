@@ -1,6 +1,6 @@
 <% if view_signed_in? %>
 <% if current_view.role == "Customer"%>
-<h4 style="color:blue;" class= "text-center mt-4" >My profile </h4>
+
 <% else %>
   <% @customers.each do |cu| %>
     <div class="card-body">
@@ -13,15 +13,16 @@
 <% end %>
 <% end %>
 
-
 <div class="container">
   <div class= "text-center"  style="width: 72rem;">
     <div class="card-body " id="flip-card-inner ">
       <div class="card-header ">
        <%= image_tag 'dummy-user.png', class: 'mr-3 guest-icon' %><br>
-        <b class="text-center" style="color:green;"><%= current_view.full_name %><br>
-        <%= current_view.email %><br>
-        <%= current_view.contact_number %><br></b>
+        <ul class="mt-4">
+      <div >Your name is <strong><%= current_view.full_name %>.</strong></div>
+      <div >You contact number is <strong><%= current_view.contact_number %> .</strong></div>
+      <div>You role is <strong><%= current_view.role %>.</strong></div>
+    </ul>
 <% @customers.each do |c| %>
   
 <% if view_signed_in? %>
@@ -82,7 +83,7 @@
        
        <hr>
       <p class= "text-center"><b>Want to cancel your booking ⁉️ </b>
-      <%= link_to "Cancel your booking", new_refund_path %></p>
+      <%= link_to "Cancel your booking" , new_refund_path, target: "_blank" %></p>
 			</div>
 		</div>
 	</div>

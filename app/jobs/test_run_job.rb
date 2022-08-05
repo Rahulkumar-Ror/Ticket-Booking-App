@@ -1,8 +1,7 @@
 class TestRunJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
-    # Do something later
-    puts "----------------------------------------"
+  def perform
+    puts "Test Run job is performed"
   end
 end

@@ -1,6 +1,8 @@
 class Admin::DashboardController < AdminController
   before_action :auth_admin
   def index
+    add_breadcrumb('Admin Page', false)
+    @workshops = Workshop.all
     @workshop_count = Workshop.count
     @upcoming_workshop_count = Workshop.upcoming_workshops.count
     @past_workshop_count = Workshop.past_workshops.count

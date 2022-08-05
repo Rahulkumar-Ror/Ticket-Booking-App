@@ -52,6 +52,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "dotenv-rails"
+  # For opening mails in development env
   gem "letter_opener"
   gem "pry"
   gem "rspec-rails"
@@ -111,3 +112,8 @@ gem 'omniauth-google-oauth2'
 gem "google_custom_search_api"
 gem "google_places"
 gem "breadcrumbs_on_rails"
+gem "phonelib"
+gem "twilio-ruby"
+gem "simple_calendar", "~> 2.4"
+gem "noticed", "~> 1.5"
+gem 'whenever'

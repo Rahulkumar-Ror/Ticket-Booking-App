@@ -2,8 +2,7 @@
 <div class="card">
 <%= form_for([@workshop, @workshop.comments.build]) do |f| %>
   <p>
-    <%= f.label :User_name, class: "mt-2" %><br>
-    <%= f.text_field :name, class: "form-control my-2" %>
+    <%= f.hidden_field :name, value: current_view.full_name,  class: "form-control my-2" %>
 	</p>
 	<p>
     <%= f.label :body %><br>

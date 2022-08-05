@@ -1,5 +1,3 @@
-
-
 <div class="col-lg-6">
   <div class="card shadow mt-5">
     <div class="card-body">
@@ -28,7 +26,7 @@
   </div>
 </div>
 
-<div class="col-lg-6">
+<div class="col-lg-3">
   <div class="card shadow mt-5">
     <div class="card-body">
       <p class="lead fw-bold"><%= @refundable_bookings.count %> Refundable Bookings</p>
@@ -39,7 +37,7 @@
   </div>
 </div>
 
-<div class="col-lg-6">
+<div class="col-lg-4">
   <div class="card shadow mt-5">
     <div class="card-body">
       <p class="lead fw-bold"><%= @active_refunds.count %> Refunds to be processed</p>
@@ -52,6 +50,30 @@
           </li>
         <% end %>
       </ul>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-5">
+  <div class="card shadow mt-5">
+    <div class="card-body">
+      <%= month_calendar() do |date| %>
+        <%= date %>
+      <% end %>
+      <% @workshops.each do |w| %>
+        <div class="card-header">
+          <h5 class="card-title">
+            <%= link_to w.name, w %>
+          </h5>
+        </div>
+        <div class="card-body">
+          <div class="card-text">
+            <em>From <%= w.start_time %> to <%= w.end_time %>  
+            <p>( Started form <%= w.start_date.strftime('%A, %B %d, %Y ') %></p> To: 
+            <p><%= w.end_date.strftime('%A, %B %d, %Y ') %> )</p></em>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

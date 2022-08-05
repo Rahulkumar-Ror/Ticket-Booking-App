@@ -15,6 +15,9 @@ module Webinari
     config.eager_load_paths << Rails.root.join("app/services")
     config.action_controller.default_protect_from_forgery = false # unless ENV["RAILS_ENV"] == "production"
     config.active_job.queue_adapter = :sidekiq
+    config.i18n.available_locales = [:en, :de, :fr]
+    config.i18n.default_locale = :en
+    config.time_zone = 'Central Time (US & Canada)'
+    config.beginning_of_week = :sunday
   end
 end
-    
