@@ -1,7 +1,5 @@
 <p> You visited this course <%= pluralize @visit_count, 'time' %>.</p>
-
 <%= render "workshops/formmodal" %>
-
 <div class="col-lg-12">
   <div class = "card shadow my-3">
     <div class="card-body">
@@ -19,6 +17,7 @@
     </div>
 		<p class="lead mt-3 mb-3"><%= @workshop.description %>
 		</p>
+    <%= button_to "Buy now", checkouts_create_path, params: {id: @workshop.id } %>
 
     <% if current_view.present? %>
       <% if current_view.role == "Admin"%>

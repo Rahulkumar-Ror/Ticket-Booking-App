@@ -1,4 +1,5 @@
 class View < ApplicationRecord
+  include SubscriptionConcern
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   

@@ -1,5 +1,8 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
+  get 'members/dashboard'
+  # get "checkout", to: "checkouts#show"
+  # get "billing", to: "billing#show"
   # get 'cart/show'
   # get 'errors/not_found'
   # get 'errors/internal-server_error'
@@ -20,6 +23,8 @@ Rails.application.routes.draw do
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
   get 'users/:id/detail', to: "users#detail", as: "user_detail"
+  post "checkouts/create", to: "checkouts#create"
+  # resources :checkout, only: [:create]
   # post 'workshops/cart/:id', to: 'carts#show', as: 'add_to_cart'
   # delete 'workshops/remove_form_cart/:id', to: 'workshops#remove_from_cart', as:  'remove_from_cart'
   # patch "admin/refunds/:id/process_refund", to: "refunds_controller#process_refund"

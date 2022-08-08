@@ -65,8 +65,14 @@
       </div>
 
       <div class="d-grid gap-2">
+        <%= link_to "subsc", workshop_path(line_items: ['price_1LTOgTFw4uYMCAh05crwfdrr'], 
+        payment_mode: 'payment'), class: "btn btn-success" %>
+      </div>
+
+      <div class="d-grid gap-2">
         <%= form.submit "Book your ticket now", class: "btn btn-outline-danger btn-lg mt-3" %>
       </div>
+
       <% end %>
       <% else %>
       <h4 class = "card-title mb-2" Workskhop is already taken!</h4>
