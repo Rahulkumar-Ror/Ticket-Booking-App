@@ -17,7 +17,7 @@
     </div>
 		<p class="lead mt-3 mb-3"><%= @workshop.description %>
 		</p>
-    <%= button_to "Buy now", checkouts_create_path, params: {id: @workshop.id } %>
+    <%= button_to "Buy now", checkouts_create_path, params: {id: @workshop.id }, method: :post, data: { turbo: false }, class: "btn btn-primary" %>
 
     <% if current_view.present? %>
       <% if current_view.role == "Admin"%>
@@ -67,7 +67,6 @@
 </div>
 
 
-
 <style>
 img {
   border: 1px solid #ddd;
@@ -80,8 +79,3 @@ img:hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
 </style>
-
-
-
-
-

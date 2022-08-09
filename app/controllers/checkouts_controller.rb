@@ -1,17 +1,6 @@
 class CheckoutsController < ApplicationController
-  
   before_action :authenticate_view!
-  # def show
-  #   current_view.processor = :stripe 
-  #   current_view.customer
-    
-  #   @checkout_session = current_view.payment_processor.checkout(
-  #     # mode: "payment",
-  #     # line_items: "price_1LTOgTFw4uYMCAh05crwfdrr"
-  #     mode: "subscription",
-  #     line_items: "default"
-  #   ) 
-  # end
+
   def create
     workshop = Workshop.find(params[:id])
     @session = Stripe::Checkout::Session.create({
@@ -23,11 +12,12 @@ class CheckoutsController < ApplicationController
         quantity: 1
       }],
       mode: 'payment',
-      success_url: root_url,
+      success_url: root_url(success: true),
       cancel_url: root_url,
     })
     respond_to do |format|
-      
+      # @session.url
+      format.html
       format.js
     end
   end

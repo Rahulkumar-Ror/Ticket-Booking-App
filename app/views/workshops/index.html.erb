@@ -8,8 +8,12 @@
   <p><%= truncate(workshop.description, length: 50) %></p>
     <h4><span class="badge bg-warning"><%= workshop.total_duration %></span></h4>
   <h8> <%= workshop.daily_duration %></h8>
-    <p><%= button_to "View Details", workshop_path(workshop), method: :get, class: "btn btn-success btn-md btn-sm" %></p>
+    <p><%= link_to "View Details", workshop_path(workshop), method: :get, class: "btn btn-secondary btn-md mt-2" %></p>
+    <div>
+      <%= button_to "Purchase & Checkout", checkouts_create_path, params: {id: workshop.id }, method: :post, data: { turbo: false }, class: "btn btn-primary mb-2" %>
+    </div>
 </div>
+ 
   <% form_with(url: cart_add_path) do |f| %>
     <%= f.hidden_field :id, value: workshop.id %>
     <%= f.number_field :quantity, value: 0, min: 1 %>

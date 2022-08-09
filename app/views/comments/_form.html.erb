@@ -2,7 +2,12 @@
 <div class="card">
 <%= form_for([@workshop, @workshop.comments.build]) do |f| %>
   <p>
-    <%= f.hidden_field :name, value: current_view.full_name,  class: "form-control my-2" %>
+	  <% if view_signed_in? %>
+      <%= f.hidden_field :name, value: current_view.email,  class: "form-control my-2" %>
+			<% else %>
+			<em>Please sign in to do a comment</em>
+		<% end %>
+		
 	</p>
 	<p>
     <%= f.label :body %><br>
