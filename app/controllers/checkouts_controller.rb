@@ -15,9 +15,14 @@ class CheckoutsController < ApplicationController
   #     format.js
   #   end                      
   # end
+
+  def cancel
+  end
   
   def success
-   
+    @session_with_expand = Stripe::Checkout::Session.retrieve({ id: params[:session_id], expand: ["line_items"]})
+ 
+    # @workshop = Workshop.all
   end
 
   def create
@@ -32,8 +37,8 @@ class CheckoutsController < ApplicationController
       }],
       mode: 'payment',
       # success_url: success_url + "?session_id={CHECKOUT_SESSION_ID}",
-      success_url: root_url + "?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: root_url,
+      success_url: success_url + "?session_id={CHECKOUT_SESSION_ID}",
+      cancel_url: cancel_url,
     })
     respond_to do |format|
       @session.url

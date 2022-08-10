@@ -1,11 +1,3 @@
-<% if params[:session_id].present? %>
-<% @session = Stripe::Checkout::Session.retrieve(params[:session_id]) %>
-<%= @session.payment_status %>
-<%= @session.payment_intent %>
-<% end %>
-
-
-<hr>
 <% @workshops.each do |workshop| %>
 <div class="card" >
   <% if workshop.clip.attached? %>
@@ -18,7 +10,7 @@
   <h8> <%= workshop.daily_duration %></h8>
     <p><%= link_to "View Details", workshop_path(workshop), method: :get, class: "btn btn-secondary btn-md mt-2" %></p>
     <div>
-      <%= button_to "Purchase & Checkout", checkouts_create_path, params: {id: workshop.id }, method: :post, data: { turbo: false }, class: "btn btn-primary mb-2" %>
+      <%= button_to "Purchase & Checkout", checkouts_create_path, params: {id: workshop.id }, method: :post, data: { turbo: false }, target: "_blank" , class: "btn btn-primary mb-2" %>
     </div>
 </div>
  

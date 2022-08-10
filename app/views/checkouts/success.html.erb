@@ -1,1 +1,62 @@
-<h1>Success</h1>
+<div class="col-lg-12">
+<h1>Success</h1> 
+<i class="checkmark">✓</i>
+<div class="card-deck">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Checkout status:</h4>
+      <p style="color:green;"><%= @session_with_expand.payment_status %></p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Amount paid:</h4>
+      <p style="color:red;"><%= @session_with_expand.amount_total %></p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Currency:</h4>
+      <p style="color:gray;"><%= @session_with_expand.currency %></p>
+    </div>
+  </div><br>
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Workshop name:</h4>
+      <% @session_with_expand.line_items.each do |line_item| %> 
+        <%= line_item.description %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+
+<style>
+      body {
+        text-align: center;
+        padding: 0px 0;
+        background: #EBF0F5;
+      }
+        h1 {
+          color: #88B04B;
+          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+          font-weight: 900;
+          font-size: 40px;
+          margin-bottom: 10px;
+        }
+   
+      .checkmark {
+        color: #9ABC66;
+        font-size: 80px;
+        line-height: 100px;
+        margin-left:-15px;
+      }
+      .card {
+        background: white;
+        padding: 60px;
+        border-radius: 4px;
+        box-shadow: 0 2px 3px #C8D0D8;
+        display: inline-block;
+        margin: 0 auto;
+      }
+    </style>
