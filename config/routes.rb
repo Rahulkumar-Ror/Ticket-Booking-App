@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   }
   get 'ajax/index'
   get 'search/index' => 'search#index'
+  get "success", to: "checkouts#success"
+  get "cancel", to: "checkouts#cancel"
   # get 'workshops#carts/:id'
   root "homes#index"
   match "/404", to: "errors#not_found", via: :all

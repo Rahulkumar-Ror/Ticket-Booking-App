@@ -23,7 +23,6 @@
     <div class="modal-body">
     <% if @workshop.is_upcoming_workshop? %>
 		    <%= form_with url: :bookings,  data: { turbo: false }, local: false do |form| %>
-
         <%= form.hidden_field :workshop_id, value: @workshop.id %>
         <% if current_view.present? %>
           <%= form.hidden_field :full_name, value: current_view.full_name, required: true %>
@@ -66,7 +65,8 @@
 
       <div class="d-grid gap-2">
         <%= link_to "subsc", workshop_path(line_items: ['price_1LTOgTFw4uYMCAh05crwfdrr'], 
-        payment_mode: 'payment'), class: "btn btn-success" %>
+        payment_mode: 'payment', data: { turbo: false }),
+         class: "btn btn-success" %>
       </div>
 
       <div class="d-grid gap-2">
@@ -75,7 +75,7 @@
 
       <% end %>
       <% else %>
-      <h4 class = "card-title mb-2" Workskhop is already taken!</h4>
+      <h4 class = "card-title mb-2"> Workskhop is already taken!</h4>
     <% end %>
 		</div>
 	</div>

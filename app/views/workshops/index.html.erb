@@ -1,3 +1,11 @@
+<% if params[:session_id].present? %>
+<% @session = Stripe::Checkout::Session.retrieve(params[:session_id]) %>
+<%= @session.payment_status %>
+<%= @session.payment_intent %>
+<% end %>
+
+
+<hr>
 <% @workshops.each do |workshop| %>
 <div class="card" >
   <% if workshop.clip.attached? %>
